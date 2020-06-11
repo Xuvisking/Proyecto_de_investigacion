@@ -1,0 +1,44 @@
+tener instalado node.js
+npm i --yes 
+-crear package.json ,base de la api, guarda todas las configuraciones 
+
+npm i express morgan
+-instalar servidor.
+expres=framework para hacer crear la api.
+morgan=permite ver por consola las peticiones que van llegando.
+
+npm i nodemon
+-ayuda para en fase de desarrollo no tener que iniciar el servidor cada vez que 
+se aplica un cambio,mantiene el servidor corriendo.
+
+npm i mysql
+-para establecer coneccion con mysql.
+
+npm i cors
+-para instalar los cors para los navegadores.
+
+node index.js 
+-para abrir la api.
+#############Como crear una ruta en la api################
+
+estructura de las rutas
+
+metodo=sera get,post,put o delete segun la queri que se desee hacer
+query=query de la base de datos
+const{elemtos1,elemeto2,...,elemetoN}= elementos que se le enviar con la query
+
+
+router.post('/usuarios',(req,res) => {
+   const {email,password}=req.body;
+    const query=`select id,nombre,email,password from usuario where email=? and password=?`;
+    mysqlConnection.query(query,[email,password],(err,rows,fields) =>{
+        if(!err){
+            console.log(req);
+            res.json(rows);//entrega cada fila de la consulta
+            console.log("Usuarios retornado!");
+        }else{
+            console.log(err);
+        }
+    });
+});
+
