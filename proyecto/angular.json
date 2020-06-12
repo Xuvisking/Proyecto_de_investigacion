@@ -128,5 +128,10 @@
   "defaultProject": "proyecto",
   "cli": {
     "analytics": false
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "css"
+    }
   }
 }
