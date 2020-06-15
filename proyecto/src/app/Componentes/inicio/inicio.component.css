@@ -33,9 +33,9 @@
 }
 
 .footer {
-    max-height: 100px;
+    min-height: 60px;
     width: 100%;
-    background-color: black;
+    background-color: #343a40!important;
     color: white;
     text-align: center;
 }
