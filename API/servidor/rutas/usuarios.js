@@ -5,7 +5,6 @@ const router = express.Router();
 //traemos la conexion con la db
 const mysqlConnection = require('../database')
 
-
 //Registrar usuario
 router.post('/usuarios', (req, res) => {
     const { email, password, usuario, descripcion } = req.body;
@@ -20,6 +19,7 @@ router.post('/usuarios', (req, res) => {
         }
     });
 });
+
 //traer usuario de la base de datos
 router.post('/usuarios', (req, res) => {
     const { email, password } = req.body;
