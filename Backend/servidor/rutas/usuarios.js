@@ -24,5 +24,6 @@ router.post('/usuarios',(req,res) => {
         }
     });
 });
+
 //para exportar la ruta al archivo index.js
 module.exports=router;
