@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+//traemos la conexion con la db
+const mysqlConnection = require('../database')
+
 //Crear Evento
 router.post('/viaje/create', (req, res) => {
     const { Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID } = req.body;
@@ -32,12 +35,11 @@ router.post('/viaje/multi/create', (req, res) => {
 });
 
 //retornar viajes
-router.get('/viajes/:id_proyecto', (req, res) => {
-    const { id_proyecto } = req.param;
-    const query = `select * from viaje where Proyecto_Proy_ID=?;`;
-    mysqlConnection.query(query, [id_proyecto], (err, rows, fields) => {
+router.get('/viajes/:id', (req, res) => {
+    const { id } = req.params;
+    const query = `select * from viaje where Proyecto_Proy_ID=?`;
+    mysqlConnection.query(query, [id], (err, rows, fields) => {
         if (!err) {
-            console.log(req);
             res.json(rows);
             console.log("Viajes retornados con exito!");
         } else {
@@ -47,12 +49,11 @@ router.get('/viajes/:id_proyecto', (req, res) => {
 });
 
 //retornar todos el multimedia de un viaje
-router.get('/viajes/:id_viaje', (req, res) => {
-    const { id_viaje } = req.param;
+router.get('/viajes/multi/:id_viaje', (req, res) => {
+    const { id_viaje } = req.params;
     const query = `select * from viajes_multimedia where ID_viaje=?;`;
     mysqlConnection.query(query, [id_viaje], (err, rows, fields) => {
         if (!err) {
-            console.log(req);
             res.json(rows);
             console.log("Viajes retornados con exito!");
         } else {
