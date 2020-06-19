@@ -6,10 +6,10 @@ const mysql=require('mysql');
 // retorna un objeto que se guarda en mysqlConecction
 const mysqlConnection = mysql.createConnection({
     //modificar con la informacion de la base de datos.
-    host:'',
-    user:'',
-    password:'',
-    database:'',
+    host:'localhost',
+    user:'root',
+    password:'root123',
+    database:'proyecto_de_investigacion',
     port: 3306
 });
 
