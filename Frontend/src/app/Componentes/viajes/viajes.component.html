@@ -1,21 +1,16 @@
 <div class="container">
     <div class="row">
-        <div class="col-4">
-            <ul class="list-group">
-                <li class="list-group-item" *ngFor="let viaje of viajes">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="text-primary">{{viaje.lugar}}</h4>
-                            <p>Fecha inicio: {{viaje.Fecha_Ini|date}}</p>
-                            <p>Fecha fin: {{viaje.Fecha_Fin|date}}</p>
-                            <p>Descripcion: {{viaje.motivo}}</p>
-
-                        </div>
-                    </div>
-                </li>
-            </ul>
+        <div *ngFor="let viaje of viajes" class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-primary">{{viaje.lugar}}</h4>
+                    <p>Fecha inicio: {{viaje.Fecha_Ini|date}}</p>
+                    <p>Fecha fin: {{viaje.Fecha_Fin|date}}</p>
+                    <p>Descripcion: {{viaje.motivo}}</p>
+                    <p>Imagenes: </p>
+                    <p>Documentos: </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<img src="https://images.alphacoders.com/986/986566.jpg">
