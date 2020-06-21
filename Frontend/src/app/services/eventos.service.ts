@@ -23,4 +23,7 @@ export class EventosService {
   postViajeProyecto(viaje:viaje){
     return this.http.post(`${this.API_URI}/viajes/create`,viaje);
   }
+  subirImagenes(formData){
+    return this.http.post(`${this.API_URI}/viajes/multi/img`,formData);
+  }
 }

@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-
+//traemos la conexion con la db
+const mysqlConnection = require('../database')
 
 //Crear Evento
-router.post('/viajes/create', (req, res) => {
+router.post('/viaje/create', (req, res) => {
     const { Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID } = req.body;
     const query = `INSERT INTO viaje(Fecha_Ini,Fecha_Fin,motivo,lugar,Proyecto_Proy_ID) values(?,?,?,?,?)`;
     mysqlConnection.query(query, [Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID], (err, rows, fields) => {
@@ -19,7 +20,7 @@ router.post('/viajes/create', (req, res) => {
 });
 
 //Crear los multimedias del proyecto
-router.post('/viaje/multi/create', (req, res) => {
+/*router.post('/viaje/multi/create', (req, res) => {
     const { ID_viaje, URL } = req.body;
     const query = `INSERT INTO viajes_multimedia(ID_viaje,URL) values(?,?)`;
     mysqlConnection.query(query, [ID_viaje, URL], (err, rows, fields) => {
@@ -32,7 +33,7 @@ router.post('/viaje/multi/create', (req, res) => {
         }
     });
 });
-
+*/
 //retornar viajes
 router.get('/viajes/:id', (req, res) => {
     const { id } = req.params;
