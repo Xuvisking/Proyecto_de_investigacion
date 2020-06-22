@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { viaje } from '../models/viajes';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,12 @@ export class EventosService {
   */
   getViajesProyecto(id_proyecto:number){
     return this.http.get(`${this.API_URI}/viajes/${id_proyecto}`);
+  }
+
+  postViajeProyecto(viaje:viaje){
+    return this.http.post(`${this.API_URI}/viajes/create`,viaje);
+  }
+  subirImagenes(formData){
+    return this.http.post(`${this.API_URI}/viajes/multi/img`,formData);
   }
 }

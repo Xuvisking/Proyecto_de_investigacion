@@ -1,0 +1,37 @@
+<div class="col-8 offset-md-2 mt-2">
+    <div class="card">
+      <div class="card-body">
+        <form action="">
+          <div class="form-group">
+            <label>Lugar:</label>
+            <input type="text" name="title" [(ngModel)]="viaje.lugar" placeholder="" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <label>Descripcion:</label>
+            <textarea name="description" [(ngModel)]="viaje.motivo" rows="2" placeholder="Description" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="start">Start date:</label>
+             <input type="date" name="start" [(ngModel)]="viaje.Fecha_Ini" value="viaje.Fecha_Ini">
+          </div>
+          <div class="form-group">
+            <label for="start">End date:</label>
+             <input type="date" name="end" [(ngModel)]="viaje.Fecha_Fin" value="viaje.Fecha_Ini">
+          </div>
+          <div class="form-group">
+              <label >Imagenes:</label>
+              <input type="file" name="img" multiple (change)="onFileChange($event)">
+          </div>
+          <div class="form-group">
+            <label>Documentos:</label>
+             <input type="file" name="img" >
+          </div>
+          <button class="btn btn-success btn-block" routerLink="/viajes" (click)="saveViaje()">Resgistrar Salida a terreno
+          </button>
+          <button class="btn btn-primary btn-block" (click)="subirImagenes()">img
+          </button>
+        </form> 
+      </div>
+    </div>
+  </div>
+  
