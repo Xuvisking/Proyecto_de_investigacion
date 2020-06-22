@@ -32,10 +32,9 @@ app.get('/', (req, res) => {
 
 //----------------middlewares----------------
 
-app.use(require('./servidor/rutas/usuarios'));
-app.use(require('./servidor/rutas/proyectos'));
-app.use(require('./servidor/rutas/grupos'));
-app.use(require('./servidor/rutas/eventos'));
+require('./servidor/rutas/usuarios.rutas');
+require('./servidor/rutas/proyecto.rutas');
+require('./servidor/rutas/grupos.rutas');
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

@@ -6,6 +6,7 @@ describe proyecto;
 describe grupo;
 describe viaje;
 describe viajes_multimedia;
+
 #Eliminar tablas
 drop table users;
 
