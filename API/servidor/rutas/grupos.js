@@ -5,7 +5,7 @@ const router = express.Router();
 const mysqlConnection=require('../database')
 
 //crear grupo
-router.post('/Grupos/Crear', (req, res) => {
+router.get('/Grupos/Crear', (req, res) => {
     const { Nombre, Descripcion, URL } = req.body;
     const query = `INSERT INTO Grupo(Nombre,Descripcion,URL) VALUES (?,?,?)`;
     mysqlConnection.query(query, [Nombre, Descripcion, URL], (err, rows, fields) => {
@@ -20,7 +20,7 @@ router.post('/Grupos/Crear', (req, res) => {
 });
 
 //eliminar un grupo
-router.post('/Grupos/Grupo/Eliminar/:Grupo_ID', (req, res) => {
+router.get('/Grupos/Grupo/Eliminar/:Grupo_ID', (req, res) => {
     const { Grupo_ID } = req.params;
     const query = `DELETE FROM Grupo WHERE Grupo_ID = '?'`;
     mysqlConnection.query(query, [id], (err, rows, fields) => {
@@ -35,7 +35,7 @@ router.post('/Grupos/Grupo/Eliminar/:Grupo_ID', (req, res) => {
 });
 
 //ver grupos
-router.post('/users/:User_ID', (req, res) => {
+router.get('/users/:User_ID', (req, res) => {
     const { User_ID } = req.params;
     const query = `SELECT * FROM Grupo_has_users where users_User_ID=?`;
     mysqlConnection.query(query, [id_users], (err, rows, fields) => {
@@ -51,7 +51,7 @@ router.post('/users/:User_ID', (req, res) => {
 //agregar miembros
 router.post('/Grupo/Miembros/agregar/:Grupo_ID', (req, res) => {
     const { User_ID, Grupo_ID } = req.body;
-    const query = `INSERT INTO Grupo_has_users(User_ID, Grupo_ID) where users_User_ID=? values (?,?)`;
+    const query = `INSERT INTO Grupo_has_users(Grupo_Grupo_ID, users_User_ID) where users_User_ID=? values (?,?)`;
     mysqlConnection.query(query, [id_users], (err, rows, fields) => {
         if (!err) {
             res.json(rows);
@@ -64,7 +64,7 @@ router.post('/Grupo/Miembros/agregar/:Grupo_ID', (req, res) => {
 
 
 //eliminar miembros
-router.post('/Grupo/Miembros/:Grupo_ID', (req, res) => {
+router.get('/Grupo/Miembros/:Grupo_ID', (req, res) => {
     const { User_ID } = req.params;
     const query = `DELETE FROM Grupo_has_users where users_User_ID=?`;
     mysqlConnection.query(query, [id_users], (err, rows, fields) => {
@@ -77,4 +77,73 @@ router.post('/Grupo/Miembros/:Grupo_ID', (req, res) => {
     });
 });
 
+//dar permisos de administrador de grupo
+router.get('/Grupo/Miembros/:Grupo_ID', (req, res) => {
+    const { User_ID } = req.params;
+    const query = `UPDATE Grupo_has_users SET admin = 1 WHERE users_User_ID=?`;
+    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Miembro eliminado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//revocar permisos de administrador de grupo
+router.get('/Grupo/Miembros/:Grupo_ID', (req, res) => {
+    const { User_ID } = req.params;
+    const query = `UPDATE Grupo_has_users SET admin = 0 WHERE users_User_ID=?`;
+    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Miembro eliminado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Insertar foto de grupo
+router.post('/Grupo/Imagen:Grupo_ID', (req, res) => {
+    const { Imagen, Grupo_ID } = req.params;
+    const query = `INSERT INTO Fotos_grupo(URL, Grupo_Grupo_ID, Nombre) WHERE users_User_ID=? VALUES(?,?,?)`;
+    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Miembro eliminado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Eliminar foto de grupo
+router.post('/Grupo/Imagen:Grupo_ID', (req, res) => {
+    const { Nombre, Grupo_ID } = req.params;
+    const query = `DELETE FROM Fotos_grupo WHERE Nombre = ? AND Grupo_Grupo_ID = ?`;
+    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Miembro eliminado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//enviar invitación  de grupo
+router.get('/Grupo/Miembros/Invitar:Grupo_ID', (req, res) => {
+    const { User_ID, Grupo_ID } = req.body;
+    const query = `INSERT INTO Inv_grupo(Grupo_Grupo_ID, users_User_ID, INV_ID, Fecha, Estado)  WHERE User_ID=? AND Grupo_ID=? values (?,?,?,?,?)`;
+    mysqlConnection.query(query, [id_users], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Miembro eliminado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
 module.exports=router;
