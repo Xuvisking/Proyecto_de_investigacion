@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //traemos la conexion con la db
-const mysqlConnection = require('../database')
+// const mysqlConnection = require('../database')
 
 //Crear Evento
 router.post('/viaje/create', (req, res) => {
@@ -35,6 +35,10 @@ router.post('/viaje/create', (req, res) => {
 });
 */
 //retornar viajes
+router.get('/testreporte', (req, res) => {
+    res.status(200).send("conectar api reportes")
+})
+
 router.get('/viajes/:id', (req, res) => {
     const { id } = req.params;
     const query = `select * from viaje where Proyecto_Proy_ID=?`;
