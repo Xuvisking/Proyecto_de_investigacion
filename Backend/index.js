@@ -44,7 +44,5 @@ app.use(cors({origin:'*'}));
 
 //---------------Rutas----------------------
 //routes
-app.use(require('./servidor/rutas/usuarios'));
-app.use(require('./servidor/rutas/proyectos'));
-app.use(require('./servidor/rutas/grupos'));
 app.use(require('./servidor/rutas/eventos'));
+app.use(require('./servidor/rutas/reportes'));
