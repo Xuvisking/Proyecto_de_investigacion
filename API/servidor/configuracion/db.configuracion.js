@@ -20,7 +20,7 @@ mysqlConnection.connect(function(err) {
         console.log(err);
         return;
     } else {
-        console.log('DB is connected!');
+        console.log('DB is connected! Comenzar a realizar operaciones porfavor');
     }
 });
 

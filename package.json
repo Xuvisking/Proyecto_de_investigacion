@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Xuvisking/Proyecto_de_investigacion/issues"
   },
-  "homepage": "https://github.com/Xuvisking/Proyecto_de_investigacion#readme"
+  "homepage": "https://github.com/Xuvisking/Proyecto_de_investigacion#readme",
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
