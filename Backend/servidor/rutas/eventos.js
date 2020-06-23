@@ -2,7 +2,24 @@ const express = require('express');
 const router = express.Router();
 
 //traemos la conexion con la db
-const mysqlConnection = require('../database')
+const mysqlConnection = require('../bd.configuracion/database')
+const multer = require('multer');
+
+const storage=multer.diskStorage({
+        destination:'imagenes/',
+        filename:(req,file,cb)=>{
+            cb(null,file.originalname)
+        }
+});
+//con esto subimos imagenes a nuestra api
+const upload=multer({storage});
+
+router.post('/viajes/multi/img',upload.array('files'),(req,res) =>{
+    console.log("Imagenes subidas con exito!");
+    res.json({
+        'message':'Imagenes agregar con exito!'
+    });
+});
 
 //Crear Evento
 router.post('/viaje/create', (req, res) => {
