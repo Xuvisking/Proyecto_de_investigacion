@@ -1,0 +1,1 @@
+INSERT INTO Proyecto(Proy_ID,Nombre,Descripcion,Estado) VALUES (NULL,'PAtata','Hola se me cayeron las cosas','sacada de texto');
