@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //traemos la conexion con la db
+<<<<<<< HEAD
 const mysqlConnection = require('../bd.configuracion/database')
 const multer = require('multer');
 
@@ -51,6 +52,9 @@ router.post('/viajes/multi/img',uploadFnct('imagenes','files'),(req,res) =>{
         'message':'Imagenes agregar con exito!'
     });
 });
+=======
+// const mysqlConnection = require('../database')
+>>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
 
 //Crear Evento
 router.post('/viajes/create', (req, res) => {
@@ -83,6 +87,7 @@ router.post('/viaje/multi/create', (req, res) => {
 });
 
 //retornar viajes
+<<<<<<< HEAD
 router.get('/ultimo/viaje/:id_proyecto', (req, res) => {
     const { id_proyecto} = req.params;
     const query = `select * from viaje where Proyecto_Proy_ID=? ORDER BY viaje_id desc limit 1`;
@@ -95,6 +100,11 @@ router.get('/ultimo/viaje/:id_proyecto', (req, res) => {
         }
     });
 });
+=======
+router.get('/testreporte', (req, res) => {
+    res.status(200).send("conectar api reportes")
+})
+>>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
 
 router.get('/viajes/:id', (req, res) => {
     const { id } = req.params;
