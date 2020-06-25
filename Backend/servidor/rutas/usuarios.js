@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 //traemos la conexion con la db
+<<<<<<< HEAD
+const mysqlConnection = require('../bd.configuracion/database');
+
+module.exports = router;
+=======
 // const mysqlConnection = require('../database')
 
 //Crear Evento
@@ -63,3 +68,4 @@ router.get('/viajes/multi/:id_viaje', (req, res) => {
 });
 
 module.exports = router;
+>>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98

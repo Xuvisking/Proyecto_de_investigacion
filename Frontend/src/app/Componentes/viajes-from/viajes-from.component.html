@@ -7,31 +7,36 @@
             <input type="text" name="title" [(ngModel)]="viaje.lugar" placeholder="" class="form-control" autofocus>
           </div>
           <div class="form-group">
+            <label>motivo:</label>
+            <input name="description" [(ngModel)]="viaje.motivo" rows="2" placeholder="" class="form-control">
+          </div>
+          <div class="form-group">
             <label>Descripcion:</label>
-            <textarea name="description" [(ngModel)]="viaje.motivo" rows="2" placeholder="Description" class="form-control"></textarea>
+            <textarea name="description" [(ngModel)]="viaje.Descripcion" rows="2" placeholder="" class="form-control"></textarea>
           </div>
           <div class="form-group">
             <label for="start">Start date:</label>
-             <input type="date" name="start" [(ngModel)]="viaje.Fecha_Ini" value="viaje.Fecha_Ini">
+             <input type="date" name="start" [(ngModel)]="viaje.Fecha_inicial" value="viaje.Fecha_Ini">
           </div>
           <div class="form-group">
             <label for="start">End date:</label>
-             <input type="date" name="end" [(ngModel)]="viaje.Fecha_Fin" value="viaje.Fecha_Ini">
+             <input type="date" name="end" [(ngModel)]="viaje.Fecha_final" value="viaje.Fecha_Ini">
           </div>
           <div class="form-group">
               <label >Imagenes:</label>
-              <input type="file" name="img" multiple (change)="onFileChange($event)">
+              <input type="file" name="img" multiple (change)="onImgChange($event)">
           </div>
           <div class="form-group">
             <label>Documentos:</label>
-             <input type="file" name="img" >
+             <input type="file" name="img" multiple (change)="onFileChange($event)" >
           </div>
-          <button class="btn btn-success btn-block" routerLink="/viajes" (click)="saveViaje()">Resgistrar Salida a terreno
+          <button class="btn btn-success btn-block" (click)="saveViaje()">Resgistrar Salida a terreno
           </button>
           <button class="btn btn-primary btn-block" (click)="subirImagenes()">img
+          </button>
+          <button class="btn btn-primary btn-block" (click)=" Id_ultimo_viaje()">Id_ultimo_viaje
           </button>
         </form> 
       </div>
     </div>
   </div>
-  

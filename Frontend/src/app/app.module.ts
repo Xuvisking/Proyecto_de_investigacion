@@ -15,7 +15,11 @@ import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
 import { ReportesComponent } from './Componentes/reportes/reportes.component';
 
+<<<<<<< HEAD
 //servicios
+=======
+//services
+>>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
 import { ViajesService } from './services/viajes.service';
 
 
