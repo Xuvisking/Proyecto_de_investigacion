@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {EventosService} from '../../services/eventos.service';
+import {ViajesService} from '../../services/viajes.service';
 @Component({
   selector: 'app-viajes',
   templateUrl: './viajes.component.html',
-  styleUrls: ['./viajes.component.sass']
+  styleUrls: ['./viajes.component.css']
 })
 export class ViajesComponent implements OnInit {
   
   viajes: any=[];
-  constructor(private eventos:EventosService) { }
+  constructor(private viaje:ViajesService) { }
   
 
   ngOnInit(): void {
-    this.eventos.getViajesProyecto(1).subscribe(
+    this.viajes.getViajesProyecto(1).subscribe(
       res=>{
         this.viajes=res;
         console.log(this.viajes)

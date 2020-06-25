@@ -9,11 +9,14 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
 import { LoginComponent } from './Componentes/login/login.component';
 import { HomeComponent } from './Componentes/home/home.component';
+
+
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
+import { ReportesComponent } from './Componentes/reportes/reportes.component';
 
-//services
-import { EventosService } from './services/eventos.service';
+//servicios
+import { ViajesService } from './services/viajes.service';
 
 
 
@@ -24,7 +27,8 @@ import { EventosService } from './services/eventos.service';
     LoginComponent,
     HomeComponent,
     ViajesComponent,
-    ViajesFromComponent
+    ViajesFromComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { EventosService } from './services/eventos.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [EventosService],
+  providers: [ViajesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

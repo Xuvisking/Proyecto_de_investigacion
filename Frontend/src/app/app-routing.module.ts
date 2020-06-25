@@ -8,23 +8,23 @@ import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.compo
 
 const routes: Routes = [
   { path:"",
-    component:InicioComponent
+    component: InicioComponent
   },
   {
     path:"login",
-    component:LoginComponent
+    component: LoginComponent
   },  
   {
     path:"home",
-    component:HomeComponent
+    component: HomeComponent
   },
   {
     path:"viajes",
-    component:ViajesComponent
+    component: ViajesComponent
   },
   {
     path:"viajes/create",
-    component:ViajesFromComponent
+    component: ViajesFromComponent
   }
 
 ];

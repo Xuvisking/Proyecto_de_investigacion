@@ -6,7 +6,7 @@ import { viaje } from '../models/viajes';
 @Injectable({
   providedIn: 'root'
 })
-export class EventosService {
+export class ViajesService {
   API_URI = 'http://localhost:3000';
   constructor(private http:HttpClient) {
 
@@ -20,8 +20,8 @@ export class EventosService {
     return this.http.get(`${this.API_URI}/viajes/${id_proyecto}`);
   }
 
-  postViajeProyecto(viaje:viaje){
-    return this.http.post(`${this.API_URI}/viajes/create`,viaje);
+  postViajeProyecto(viajes:viaje){
+    return this.http.post(`${this.API_URI}/viajes/create`,viajes);
   }
   subirImagenes(formData){
     return this.http.post(`${this.API_URI}/viajes/multi/img`,formData);

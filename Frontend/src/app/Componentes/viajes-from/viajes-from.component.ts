@@ -1,12 +1,12 @@
 import { Component, OnInit,HostBinding } from '@angular/core';
 import { viaje } from 'src/app/models/viajes';
-import {EventosService} from '../../services/eventos.service';
+import {ViajesService} from '../../services/viajes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-viajes-from',
   templateUrl: './viajes-from.component.html',
-  styleUrls: ['./viajes-from.component.sass']
+  styleUrls: ['./viajes-from.component.css']
 })
 export class ViajesFromComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class ViajesFromComponent implements OnInit {
   }
   imagenes:Array<File>;
 
-  constructor(private eventos:EventosService, private router: Router, private activatedRoute: ActivatedRoute,private http:HttpClient) { }
+  constructor(private viajes:ViajesService, private router: Router, private activatedRoute: ActivatedRoute,private http:HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -46,7 +46,7 @@ export class ViajesFromComponent implements OnInit {
   }
   saveViaje(){
     console.log(this.viaje);
-    this.eventos.postViajeProyecto(this.viaje)
+    this.viajes.postViajeProyecto(this.viaje)
       .subscribe(
         res => {
           console.log(res);
