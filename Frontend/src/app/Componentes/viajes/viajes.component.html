@@ -1,16 +1,35 @@
 <div class="container">
     <div class="row">
-        <div *ngFor="let viaje of viajes" class="col-3">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="text-primary">{{viaje.lugar}}</h4>
-                    <p>Fecha inicio: {{viaje.Fecha_Ini|date}}</p>
-                    <p>Fecha fin: {{viaje.Fecha_Fin|date}}</p>
-                    <p>Descripcion: {{viaje.motivo}}</p>
-                    <p>Imagenes: </p>
-                    <p>Documentos: </p>
+        <div class="col-8 offset-md-2 mt-2">
+            <div *ngFor="let viaje of viajes" class="">
+                <div class="card" >
+                    <div class="card-body">
+                        <h4 class="text-primary">{{viaje.lugar}}</h4>
+                        <p>Fecha inicio: {{viaje.Fecha_Ini|date}}</p>
+                        <p>Fecha fin: {{viaje.Fecha_Fin|date}}</p>
+                        <p>Descripcion: {{viaje.motivo}}</p>
+                        <p>Imagenes: </p>
+                        <div class="container">
+                            <div class="row">
+                                <div *ngFor="let img of imagenes" class="col-6 my-1">
+                                    <img [src]="img" alt="" style="width: 100%;">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <p>Documentos: </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="http://localhost:3000/download/GU%C3%8DA%20%20n%C2%BA%20%205%20%208%C2%BA%20%20funciones.pdf">carta gantt</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="http://localhost:3000/GU%C3%8DA%20%20n%C2%BA%20%205%20%208%C2%BA%20%20funciones.pdf">listado de participantes</a>
+                                </li>
+                            </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

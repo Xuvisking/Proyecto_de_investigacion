@@ -13,7 +13,7 @@ import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
 
 //services
-import { EventosService } from './services/eventos.service';
+import { ViajesService } from './services/viajes.service';
 
 
 
@@ -32,7 +32,7 @@ import { EventosService } from './services/eventos.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [EventosService],
+  providers: [ViajesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

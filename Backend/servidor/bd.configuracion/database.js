@@ -1,8 +1,6 @@
 //conexion con la base de datos
 
 const mysql=require('mysql');
-
-
 // retorna un objeto que se guarda en mysqlConecction
 const mysqlConnection = mysql.createConnection({
     host:'localhost',

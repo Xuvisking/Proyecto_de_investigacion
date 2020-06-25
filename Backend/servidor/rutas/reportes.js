@@ -5,18 +5,20 @@ const router = express.Router();
 const mysqlConnection = require('../bd.configuracion/database');
 
 //Crear Evento
-router.post('/viaje/create', (req, res) => {
-    const { Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID } = req.body;
-    const query = `INSERT INTO viaje(Fecha_Ini,Fecha_Fin,motivo,lugar,Proyecto_Proy_ID) values(?,?,?,?,?)`;
-    mysqlConnection.query(query, [Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID], (err, rows, fields) => {
+router.post('/reportes/create', (req, res) => {
+    const { Nombre, Fecha_Inicial, Fecha_Final, Proyecto_Proy_ID } = req.body;
+    console.log(req.body);
+    const query ='INSERT INTO Reporte(Nombre,Fecha_inicial,Fecha_final,Proyecto_Proy_ID) VALUES (?,?,?,?)';
+    mysqlConnection.query(query, [Nombre, Fecha_Inicial, Fecha_Final, Proyecto_Proy_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);
-            console.log("Viaje creado con exito!");
+            console.log("resporte creado con exito!");
         } else {
             console.log(err);
         }
     });
+
 });
 
 //Crear los multimedias del proyecto
