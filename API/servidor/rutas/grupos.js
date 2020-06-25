@@ -5,14 +5,29 @@ const router = express.Router();
 const mysqlConnection=require('../database')
 
 //crear grupo
-router.get('/Grupos/Crear', (req, res) => {
-    const { Nombre, Descripcion, URL } = req.body;
-    const query = `INSERT INTO Grupo(Nombre,Descripcion,URL) VALUES (?,?,?)`;
-    mysqlConnection.query(query, [Nombre, Descripcion, URL], (err, rows, fields) => {
+
+router.post('/Grupos/Crear', (req, res) => {
+    const data= req.body;
+    mysqlConnection.query(`INSERT INTO Grupo set ? `, [data], (err, rows) => {
         if (!err) {
-            console.log(req);
+            ///console.log(req);
             res.json(rows);
             console.log("Grupo creado!");
+            //res.render('grupos.html')
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//muestra los grupos 
+router.get('/Grupos/', (req, res) => {
+    const { Nombre, Descripcion, URL } = req.body;
+    const query = `SELECT * FROM Grupo`;
+    mysqlConnection.query(query, (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("mostrando ");
         } else {
             console.log(err);
         }
@@ -20,10 +35,10 @@ router.get('/Grupos/Crear', (req, res) => {
 });
 
 //eliminar un grupo
-router.get('/Grupos/Grupo/Eliminar/:Grupo_ID', (req, res) => {
+router.post('/Grupos/Grupo/Eliminar/:Grupo_ID', (req, res) => {
     const { Grupo_ID } = req.params;
-    const query = `DELETE FROM Grupo WHERE Grupo_ID = '?'`;
-    mysqlConnection.query(query, [id], (err, rows, fields) => {
+    const query = `DELETE FROM Grupo WHERE Grupo_ID = ? `;
+    mysqlConnection.query(query, [Grupo_ID], (err, rows, fields) => {
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -37,7 +52,7 @@ router.get('/Grupos/Grupo/Eliminar/:Grupo_ID', (req, res) => {
 //ver grupos
 router.get('/users/:User_ID', (req, res) => {
     const { User_ID } = req.params;
-    const query = `SELECT * FROM Grupo_has_users where users_User_ID=?`;
+    const query = `SELECT * FROM Grupo_has_users where users_User_ID = ?`;
     mysqlConnection.query(query, [id_users], (err, rows, fields) => {
         if (!err) {
             res.json(rows);

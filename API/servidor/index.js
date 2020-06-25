@@ -23,6 +23,9 @@ app.use(express.json());
 //Para los cors del navegador
 app.use(cors());
 
+
+//vistas
+app.set('view engine', 'ejs');
 //---------------Rutas----------------------
 //routes
 app.use(require('./rutas/usuarios'));
