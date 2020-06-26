@@ -5,6 +5,8 @@ import { LoginComponent } from './Componentes/login/login.component';
 import { HomeComponent } from './Componentes/home/home.component';
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
+import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
+import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
 
 const routes: Routes = [
   { path:"",
@@ -25,6 +27,15 @@ const routes: Routes = [
   {
     path:"viajes/create",
     component:ViajesFromComponent
+  },
+  {
+    path:"presentaciones/create",
+    component:PresentacionesFormComponent
+  }
+  ,
+  {
+    path:"presentacion",
+    component:PresentacionesComponent
   }
 
 ];

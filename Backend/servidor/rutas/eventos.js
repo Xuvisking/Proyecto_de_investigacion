@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
-
+var cors = require('cors');
+var app = express();
 //traemos la conexion con la db
-<<<<<<< HEAD
 const mysqlConnection = require('../bd.configuracion/database')
 const multer = require('multer');
+
+
+app.use(cors({origin:'*'}));
 
 var uploadFnct = function(dest,type){
     var storage = multer.diskStorage({ //multers disk storage settings
@@ -21,30 +24,14 @@ var uploadFnct = function(dest,type){
 
     return upload;
 };
-/*
-//con esto subimos imagenes a nuestra api
-const storage=multer.diskStorage({
-        destination:'imagenes/',
-        CZ
-});
-//con esto subimos Documentos a nuestra api
-const storageDoc=multer.diskStorage({
-    destination:'doc/',
-    filename:(req,file,cb)=>{
-        cb(null,file.originalname)
-    }
-});
-
-const upload=multer({storage});
-const uploadDoc=multer({storageDoc});
-*/
+//insertar doc en api
 router.post('/viajes/multi/doc',uploadFnct('documentos','documents'),(req,res) =>{
     console.log("Documentos subidos con exito");
     res.json({
         'message':'Docuemento guardado en el servidor!'
     });
 });
-
+//insertar imagen en api
 router.post('/viajes/multi/img',uploadFnct('imagenes','files'),(req,res) =>{
     
     console.log("Imagenes subidas con exito!");
@@ -52,23 +39,24 @@ router.post('/viajes/multi/img',uploadFnct('imagenes','files'),(req,res) =>{
         'message':'Imagenes agregar con exito!'
     });
 });
-=======
-// const mysqlConnection = require('../database')
->>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
 
 //Crear Evento
 router.post('/viajes/create', (req, res) => {
     console.log(req.body);
     const { Fecha_inicial, Fecha_final, motivo, lugar, Proyecto_Proy_ID, Descripcion} = req.body;
+    console.log(Proyecto_Proy_ID);
     const query = `INSERT INTO viaje(Fecha_inicial,Fecha_final,motivo,lugar,Proyecto_Proy_ID,Descripcion) values(?,?,?,?,?,?)`;
     mysqlConnection.query(query, [Fecha_inicial, Fecha_final, motivo, lugar, Proyecto_Proy_ID, Descripcion], (err, rows, fields) => {
         if (!err) {
             console.log("Viaje creado con exito!");
+            res.redirect(`/ultimo/viaje/${Proyecto_Proy_ID}`);
+
         } else {
             console.log(err);
         }
     });
-
+    
+    
 });
 
 //Crear los multimedias del proyecto
@@ -77,34 +65,28 @@ router.post('/viaje/multi/create', (req, res) => {
     const query = `insert into fotos_viaje(URL,Viaje_Viaje_ID,Viaje_Proyecto_Proy_ID,Nombre) values (?,?,?,?);`;
     mysqlConnection.query(query, [URL, Viaje_Viaje_ID, Viaje_Proyecto_Proy_ID, Nombre], (err, rows, fields) => {
         if (!err) {
-            console.log(req);
-            res.json(rows);
             console.log("Multimedia de viaje creada con exito!");
         } else {
             console.log(err);
         }
     });
+    
 });
 
 //retornar viajes
-<<<<<<< HEAD
 router.get('/ultimo/viaje/:id_proyecto', (req, res) => {
     const { id_proyecto} = req.params;
     const query = `select * from viaje where Proyecto_Proy_ID=? ORDER BY viaje_id desc limit 1`;
     mysqlConnection.query(query, [ id_proyecto ], (err, rows, fields) => {
         if (!err) {
             res.json(rows);
+            console.log(rows);
             console.log("ultimo viaje retornado con exito");
         } else {
             console.log(err);
         }
     });
 });
-=======
-router.get('/testreporte', (req, res) => {
-    res.status(200).send("conectar api reportes")
-})
->>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
 
 router.get('/viajes/:id', (req, res) => {
     const { id } = req.params;

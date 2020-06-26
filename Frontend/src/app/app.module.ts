@@ -11,7 +11,8 @@ import { LoginComponent } from './Componentes/login/login.component';
 import { HomeComponent } from './Componentes/home/home.component';
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
-
+import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
+import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
 //services
 import { ViajesService } from './services/viajes.service';
 
@@ -24,7 +25,9 @@ import { ViajesService } from './services/viajes.service';
     LoginComponent,
     HomeComponent,
     ViajesComponent,
-    ViajesFromComponent
+    ViajesFromComponent,
+    PresentacionesComponent,
+    PresentacionesFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,43 @@
-<div class="container">
+
+<div *ngIf="bool==true" class="container">
+    <div class="row">
+            
+        <div class="card">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                Salidas a terreno
+                <button class="btn btn-success btn-sm" [routerLink]="['/viajes/create']" >+
+                </button>
+              </div>
+            
+            <div class="card-body">
+                <ul *ngFor="let viaje of viajes;let iteracion=index" class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a (click)="mostrarViaje(viaje.Viaje_ID)">{{viaje.Lugar}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<div *ngIf="bool==false" class="container">
     <div class="row">
         <div class="col-8 offset-md-2 mt-2">
-            <div *ngFor="let viaje of viajes" class="">
+            <div class="">
+                <button class="btn btn-danger" (click)="volver()">volver</button>
                 <div class="card" >
                     <div class="card-body">
-                        <h4 class="text-primary">{{viaje.lugar}}</h4>
-                        <p>Fecha inicio: {{viaje.Fecha_Ini|date}}</p>
-                        <p>Fecha fin: {{viaje.Fecha_Fin|date}}</p>
-                        <p>Descripcion: {{viaje.motivo}}</p>
+
+                        <h4 class="text-primary">{{vjs.Lugar}}</h4>
+                        <p>Motivo: {{vjs.Motivo}}</p>
+                        <p>Fecha inicio: {{vjs.Fecha_inicial|date}}</p>
+                        <p>Fecha fin: {{vjs.Fecha_final|date}}</p>
+                        <p>Descripcion: {{vjs.Descripcion}}</p>
                         <p>Imagenes: </p>
                         <div class="container">
                             <div class="row">
                                 <div *ngFor="let img of imagenes" class="col-6 my-1">
-                                    <img [src]="img" alt="" style="width: 100%;">
+                                    <img [src]="img" alt="" class="card-img-top">
                                 </div>
                             </div>
                             
@@ -20,7 +45,7 @@
                         <p>Documentos: </p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <a href="http://localhost:3000/download/GU%C3%8DA%20%20n%C2%BA%20%205%20%208%C2%BA%20%20funciones.pdf">carta gantt</a>
+                                    <a href="http://localhost:3000/download/FolletoAlma.pdf">Folleto Alma</a>
                                 </li>
                                 <li class="list-group-item">
                                     <a href="http://localhost:3000/GU%C3%8DA%20%20n%C2%BA%20%205%20%208%C2%BA%20%20funciones.pdf">listado de participantes</a>

@@ -2,9 +2,6 @@ var express = require('express');
 var http = require('http');
 var app = express();
 var cors = require('cors');
-<<<<<<< HEAD
-=======
-var morgan = require('morgan');
 const multer =require('multer');
 
 const storage=multer.diskStorage({
@@ -26,7 +23,6 @@ app.post('/viajes/multi/img',upload.array('files'),(req,res) =>{
     
 });
 
->>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
 //mensaje al inicio del server
 
 app.get('/', (req, res) => {
@@ -74,3 +70,4 @@ app.use(require('./servidor/rutas/usuarios'));
 app.use(require('./servidor/rutas/eventos'));
 app.use(require('./servidor/rutas/reportes'));
 app.use(require('./servidor/rutas/usuarios'));
+module.exports = app;
