@@ -3,7 +3,7 @@ import {ViajesService} from '../../services/viajes.service';
 @Component({
   selector: 'app-viajes',
   templateUrl: './viajes.component.html',
-  styleUrls: ['./viajes.component.sass']
+  styleUrls: ['./viajes.component.css']
 })
 export class ViajesComponent implements OnInit {
   imagenes:any=["http://localhost:3000/alma.jpg","http://localhost:3000/eclipse%20solar.jpg"];
@@ -20,7 +20,7 @@ export class ViajesComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.viaje.getViajesProyecto(1).subscribe(
+    this.viajes.getViajesProyecto(1).subscribe(
       res=>{
         this.viajes=res;
         console.log(this.viajes)

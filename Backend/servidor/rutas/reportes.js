@@ -7,11 +7,20 @@ const mysqlConnection = require('../bd.configuracion/database');
 //Crear Evento
 console.log('Rutas de Reportes');
 router.post('/reportes/create', (req, res) => {
-    const mysqlConnection = require('../bd.configuracion/database');
 
+<<<<<<< HEAD
+    const { Nombre,Fecha_Inicial,Fecha_Final, Proyecto_Proy_ID } = req.body;
+    const query ='INSERT INTO Reporte(Nombre, Fecha_inicial, Fecha_final, Proyecto_Proy_ID) VALUES (?,?,?,?)';
+    mysqlConnection.query(query, [Nombre,Fecha_Inicial,Fecha_Final,Proyecto_Proy_ID], (err, rows, fields) => {
+=======
     const { Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID } = req.body;
     const query = `INSERT INTO viaje(Fecha_Ini,Fecha_Fin,motivo,lugar,Proyecto_Proy_ID) values(?,?,?,?,?)`;
     mysqlConnection.query(query, [Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID], (err, rows, fields) => {
+<<<<<<< HEAD
+=======
+>>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
+>>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
+>>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -20,7 +29,19 @@ router.post('/reportes/create', (req, res) => {
             console.log(err);
         }
     });
+<<<<<<< HEAD
     mysqlConnection.end()
+=======
+<<<<<<< HEAD
+    
+=======
+<<<<<<< HEAD
+
+=======
+    mysqlConnection.end()
+>>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
+>>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
+>>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
 });
 
 //Crear los multimedias del proyecto
@@ -39,23 +60,22 @@ router.post('/reportes/create', (req, res) => {
 });
 */
 //retornar viajes
-router.get('/reporte/:id', (req, res) => {
-    const mysqlConnection = require('../bd.configuracion/database');
+router.get('/reportes_proy/:id', (req, res) => {
+    
     const { id } = req.params;
-    const query = `select * from viaje where Proyecto_Proy_ID=?`;
+    const query = `select * from Reporte where Proyecto_Proy_ID=?`;
     mysqlConnection.query(query, [id], (err, rows, fields) => {
         if (!err) {
             res.json(rows);
-            console.log("Viajes retornados con exito!");
+            console.log("Reportes retornados con exito del proyecto "+ id);
         } else {
             console.log(err);
         }
     });
-    mysqlConnection.end();
+    
 });
 
 router.get('/reportes', (req, res) => {
-    const mysqlConnection = require('../bd.configuracion/database');
     const { id } = req.params;
     const query = `SELECT * FROM Reporte`;
     mysqlConnection.query(query, [id], (err, rows, fields) => {
@@ -66,24 +86,9 @@ router.get('/reportes', (req, res) => {
             console.log(err);
         }
     });
-    mysqlConnection.end();
 });
 
 
-//retornar todos el multimedia de un viaje
-router.get('/reportes/multi/:id_viaje', (req, res) => {
-    const mysqlConnection = require('../bd.configuracion/database');
-    const { id_viaje } = req.params;
-    const query = `select * from viajes_multimedia where ID_viaje=?;`;
-    mysqlConnection.query(query, [id_viaje], (err, rows, fields) => {
-        if (!err) {
-            res.json(rows);
-            console.log("Viajes retornados con exito!");
-        } else {
-            console.log(err);
-        }
-    });
-    mysqlConnection.end();
-});
+
 
 module.exports = router;

@@ -18,8 +18,14 @@ export class ViajesService {
   getViajesID(id_viaje:number){
     return this.http.get(`${this.API_URI}/viaje/${id_viaje}`);
   }
+<<<<<<< HEAD
   postViajeProyecto(viaje:viaje){
     return this.http.post(`${this.API_URI}/viajes/create`,viaje);
+=======
+
+  postViajeProyecto(viajes:viaje){
+    return this.http.post(`${this.API_URI}/viajes/create`,viajes);
+>>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
   }
   subirImagenes(formData){
     return this.http.post(`${this.API_URI}/viajes/multi/img`,formData);

@@ -1,5 +1,9 @@
 import { Component, OnInit,HostBinding } from '@angular/core';
+<<<<<<< HEAD
+import { viaje } from 'src/app/models/viajes';
+=======
 import { viaje, viaje_id, fotos_viaje } from 'src/app/models/viajes';
+>>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
 import {ViajesService} from '../../services/viajes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
@@ -7,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-viajes-from',
   templateUrl: './viajes-from.component.html',
-  styleUrls: ['./viajes-from.component.sass']
+  styleUrls: ['./viajes-from.component.css']
 })
 export class ViajesFromComponent implements OnInit {
 
@@ -25,7 +29,15 @@ export class ViajesFromComponent implements OnInit {
   documentos:Array<File>;
 
   constructor(private viajes:ViajesService, private router: Router, private activatedRoute: ActivatedRoute,private http:HttpClient) { }
+<<<<<<< HEAD
     urlImg="http://localhost:3000/5d0427599bd5f.jpeg";
+=======
+<<<<<<< HEAD
+
+=======
+  urlImg="http://localhost:3000/5d0427599bd5f.jpeg";
+>>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
+>>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
   ngOnInit(): void {
   }
 
@@ -76,7 +88,14 @@ export class ViajesFromComponent implements OnInit {
     );
   }
   saveViaje(){
+<<<<<<< HEAD
     console.log(this.viaje.Fecha_final);
+=======
+<<<<<<< HEAD
+    console.log(this.viaje);
+    this.viajes.postViajeProyecto(this.viaje)
+=======
+>>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
     this.viajes.postViajeProyecto(this.viaje)
       .subscribe(
         res => {
@@ -89,6 +108,17 @@ export class ViajesFromComponent implements OnInit {
       )
       
   }
+<<<<<<< HEAD
+=======
+  Id_ultimo_viaje(){
+    this.viajes.getUltimoViaje(1)
+>>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
+      .subscribe(
+        res => {
+          this.viaje_id=res;
+          console.log(res);
+          console.log(this.viaje_id)
+>>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
 
   guardarRutasImg(){
     //con esto tengo el id del ultimo viaje creado y tambien tengo el id del proyecto

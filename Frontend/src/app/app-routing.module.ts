@@ -10,22 +10,23 @@ import { PresentacionesComponent } from './Componentes/presentaciones/presentaci
 
 const routes: Routes = [
   { path:"",
-    component:InicioComponent
+    component: InicioComponent
   },
   {
     path:"login",
-    component:LoginComponent
+    component: LoginComponent
   },  
   {
     path:"home",
-    component:HomeComponent
+    component: HomeComponent
   },
   {
     path:"viajes",
-    component:ViajesComponent
+    component: ViajesComponent
   },
   {
     path:"viajes/create",
+<<<<<<< HEAD
     component:ViajesFromComponent
   },
   {
@@ -36,6 +37,9 @@ const routes: Routes = [
   {
     path:"presentacion",
     component:PresentacionesComponent
+=======
+    component: ViajesFromComponent
+>>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
   }
 
 ];

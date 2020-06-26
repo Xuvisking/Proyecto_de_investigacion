@@ -66,8 +66,7 @@ app.use(cors({origin:'*'}));
 //Para ver ficheros 
 //---------------Rutas----------------------
 //routes
-app.use(require('./servidor/rutas/usuarios'));
 app.use(require('./servidor/rutas/eventos'));
 app.use(require('./servidor/rutas/reportes'));
+app.use(require('./servidor/rutas/presentacion'));
 app.use(require('./servidor/rutas/usuarios'));
-module.exports = app;
