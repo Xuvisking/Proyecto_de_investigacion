@@ -1,9 +1,5 @@
 import { Component, OnInit,HostBinding } from '@angular/core';
-<<<<<<< HEAD
-import { viaje } from 'src/app/models/viajes';
-=======
 import { viaje, viaje_id, fotos_viaje } from 'src/app/models/viajes';
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
 import {ViajesService} from '../../services/viajes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
@@ -28,11 +24,7 @@ export class ViajesFromComponent implements OnInit {
   documentos:Array<File>;
 
   constructor(private viajes:ViajesService, private router: Router, private activatedRoute: ActivatedRoute,private http:HttpClient) { }
-<<<<<<< HEAD
-
-=======
   urlImg="http://localhost:3000/5d0427599bd5f.jpeg";
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
   ngOnInit(): void {
   }
 
@@ -75,10 +67,6 @@ export class ViajesFromComponent implements OnInit {
     );
   }
   saveViaje(){
-<<<<<<< HEAD
-    console.log(this.viaje);
-    this.viajes.postViajeProyecto(this.viaje)
-=======
     this.viajes.postViajeProyecto(this.viaje)
       .subscribe(
         res => {
@@ -92,7 +80,6 @@ export class ViajesFromComponent implements OnInit {
   }
   Id_ultimo_viaje(){
     this.viajes.getUltimoViaje(1)
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
       .subscribe(
         res => {
           this.viaje_id=res;

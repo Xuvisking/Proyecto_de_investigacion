@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-=======
 import { Component, OnInit} from '@angular/core';
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
 import {ViajesService} from '../../services/viajes.service';
 @Component({
   selector: 'app-viajes',
@@ -16,11 +12,7 @@ export class ViajesComponent implements OnInit {
   
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    this.viajes.getViajesProyecto(1).subscribe(
-=======
     this.viaje.getViajesID(1).subscribe(
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
       res=>{
         this.viajes=res;
         console.log(this.viajes)
