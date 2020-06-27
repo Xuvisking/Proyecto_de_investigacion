@@ -5,6 +5,21 @@ const router = express.Router();
 const mysqlConnection = require('../bd.configuracion/database');
 console.log('Rutas de Presentaciones');
 
+//Actualizar cambio
+router.put('/presentaciones/update', (req, res) => {
+    console.log(req.body);
+    const {Titulo,Fecha,Lugar,Presentador,Descripcion,Presentacion_ID} = req.body;
+    const query = `UPDATE presentacion SET Titulo=?,Fecha=?,Lugar=?,Presentador=?,Descripcion=? WHERE Presentacion_ID=?`;
+    mysqlConnection.query(query, [Titulo,Fecha,Lugar,Presentador,Descripcion,Presentacion_ID], (err, rows, fields) => {
+        if (!err) {
+            console.log("Viaje Actualizado con exito!");
+            res.json(rows.changedRows);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 //Crear presentacion
 router.post('/presentaciones/create', (req, res) => {
     const { Titulo,Fecha,Lugar,Presentador,Descripcion,Proyecto_Proy_ID } = req.body;
@@ -33,7 +48,22 @@ router.get('/ultimo/presentaciones/:id_proyecto', (req, res) => {
         }
     });
 });
-//retornar presentaciones
+
+//retornar una presentaacion en particular
+router.get('/presentacion/:id', (req, res) => {
+    const { id } = req.params;
+    const query = `select * from Presentacion where Presentacion_ID=?`;
+    mysqlConnection.query(query, [id], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Presentacion retornada "+ id);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//retornar presentaciones de un proyecto
 router.get('/presentaciones/:id', (req, res) => {
     const { id } = req.params;
     const query = `select * from Presentacion where Proyecto_Proy_ID=?`;

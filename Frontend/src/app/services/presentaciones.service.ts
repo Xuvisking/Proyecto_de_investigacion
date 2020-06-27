@@ -10,7 +10,9 @@ export class PresentacionesService {
   API_URI = 'http://localhost:3000';
   constructor(private http:HttpClient) {
    }
-  
+  getPresentacion(id_presentacion:number){
+    return this.http.get(`${this.API_URI}/presentacion/${id_presentacion}`);
+  }
   getPresentacionesProyecto(id_proyecto:number){
     return this.http.get(`${this.API_URI}/presentaciones/${id_proyecto}`);
   }
@@ -28,5 +30,8 @@ export class PresentacionesService {
   }
   deletePresentacion(Presentacion_ID:number){
     return this.http.delete(`${this.API_URI}/presentaciones/delete/${Presentacion_ID}`);
+  }
+  updatePresentacion(presenta:presentacion){
+    return this.http.put(`${this.API_URI}/presentaciones/update`,presenta);
   }
 }

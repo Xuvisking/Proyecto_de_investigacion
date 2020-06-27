@@ -21,6 +21,7 @@ export class PresentacionesComponent implements OnInit {
   proyecto_id:number=1;
   //confiar en urls
   trustedDashboardUrl : SafeUrl;
+  p: number = 1;
   constructor(private present:PresentacionesService,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {

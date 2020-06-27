@@ -17,6 +17,7 @@ import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.compo
 import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
 import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
 import { ReportesComponent } from './Componentes/reportes/reportes.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 //servicios
 import { ViajesService } from './services/viajes.service';
@@ -32,13 +33,14 @@ import {PresentacionesService} from './services/presentaciones.service';
     ViajesFromComponent,
     PresentacionesComponent,
     PresentacionesFormComponent,
-    ReportesComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [ViajesService,PresentacionesService],
   bootstrap: [AppComponent]

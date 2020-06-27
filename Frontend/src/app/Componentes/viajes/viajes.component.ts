@@ -15,6 +15,7 @@ export class ViajesComponent implements OnInit {
   bool:boolean=true;
   //traer este valor por localStorage o por parametro url
   proyecto_id:number=1;
+  p: number = 1;
   constructor(private viaje:ViajesService) { }
   
 

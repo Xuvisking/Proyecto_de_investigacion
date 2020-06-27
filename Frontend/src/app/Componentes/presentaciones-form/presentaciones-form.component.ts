@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./presentaciones-form.component.css']
 })
 export class PresentacionesFormComponent implements OnInit {
-
+  edit:boolean=false;
   proyecto_id=1;
   documentos:Array<File>;
   presentacion:presentacion={
@@ -24,8 +24,38 @@ export class PresentacionesFormComponent implements OnInit {
   Ultima_presentacion:any;
   constructor(private presen:PresentacionesService,private router: Router,private activatedRoute: ActivatedRoute,private http:HttpClient) { }
   ngOnInit(): void {
+    const params = this.activatedRoute.snapshot.params;
+    if (params.id) {
+      this.presen.getPresentacion(params.id)
+        .subscribe(
+          res => {
+            this.presentacion= res[0];
+            console.log(this.presentacion)
+            //this.viaje.Fecha_inicial=new Date(`${this.viaje.Fecha_inicial.getFullYear()}-${this.viaje.Fecha_inicial.getMonth()}-${this.viaje.Fecha_inicial.getDate()}`);
+            //let fecha = new Date(this.viaje.Fecha_final);
+            //console.log(typeof fecha)
+            this.edit = true;
+            console.log(this.edit);
+          },
+          err => console.log(err)
+        )
+        }
   }
+  ActualizarPresentacion(){
+    delete this.presentacion.Proyecto_Proy_ID;
+    this.presen.updatePresentacion(this.presentacion)
+      .subscribe(
+        res => {
+          console.log('Presentacion actualizado con exito')
+         console.log(res);
+          //actualizar imagenes y/o docuemntos
+          this.router.navigate(['presentaciones']);
+        },
+        err => console.error(err)
+      )
 
+
+  }
   onFileChange(e){
     //cargo los archivos al arreglo documentos
     if(e.target.files.length!=0){

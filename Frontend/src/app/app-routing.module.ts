@@ -7,7 +7,6 @@ import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
 import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
 import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
-
 const routes: Routes = [
   { path:"",
     component: InicioComponent
@@ -40,6 +39,10 @@ const routes: Routes = [
   {
     path:"viajes/update/:id",
     component:ViajesFromComponent
+  },
+  {
+    path:"presentaciones/update/:id",
+    component:PresentacionesFormComponent
   }
 
 ];

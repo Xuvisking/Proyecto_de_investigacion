@@ -9,7 +9,6 @@ const mysqlConnection = mysql.createConnection({
     database:'proyecto_de_investigacion',
     port: 3306
 });
-
 //establecer el conexion
 mysqlConnection.connect(function(err){
 
