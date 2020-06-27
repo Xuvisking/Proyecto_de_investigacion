@@ -1,38 +1,42 @@
-<div class="col-8 offset-md-2 mt-2">
-  <div class="card">
-    <div class="card-body">
-      <form action="">
-        <div class="form-group">
-          <label>Lugar:</label>
-          <input type="text" [(ngModel)]="viaje.Lugar" name="Lugar" class="form-control">
+<div class="container">
+    <div class="row">
+      <div class="col-8 offset-md-2 mt-2">
+        <div class="card">
+          <div class="card-body">
+            <form action="">
+              <div class="form-group">
+                <label>Lugar:</label>
+                <input type="text" [(ngModel)]="viaje.Lugar" name="Lugar" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Motivo:</label>
+                <input type="text" [(ngModel)]="viaje.Motivo" name="viaje.Motivo" rows="2" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Descripcion:</label>
+                <textarea [(ngModel)]="viaje.Descripcion" name="viaje.Descripcion" rows="2" class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="start">Fecha inicio:</label>
+                  <input type="date" name="start" [(ngModel)]="viaje.Fecha_inicial" name="Fecha_inicial">
+              </div>
+              <div class="form-group">
+                <label for="start">Fecha fin:</label>
+                  <input type="date" name="end" [(ngModel)]="viaje.Fecha_final" name="Fecha_final">
+              </div>
+              <div class="form-group">
+                  <label >Imagenes:</label>
+                  <input type="file" name="img" multiple (change)="onImgChange($event)">
+              </div>
+              <div class="form-group">
+                <label>Documentos:</label>
+                  <input type="file" name="img" multiple (change)="onFileChange($event)" >
+              </div>
+              <button class="btn btn-success btn-block" (click)="edit ? ActualizarViaje() : saveViaje()">{{edit== true ? 'Editar' : 'Crear Salia a terreno'}}
+              </button>
+            </form> 
+          </div>
         </div>
-        <div class="form-group">
-          <label>Motivo:</label>
-          <input type="text" [(ngModel)]="viaje.Motivo" name="viaje.Motivo" rows="2" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Descripcion:</label>
-          <textarea [(ngModel)]="viaje.Descripcion" name="viaje.Descripcion" rows="2" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="start">Fecha inicio:</label>
-            <input type="date" name="start" [(ngModel)]="viaje.Fecha_inicial" name="Fecha_inicial">
-        </div>
-        <div class="form-group">
-          <label for="start">Fecha fin:</label>
-            <input type="date" name="end" [(ngModel)]="viaje.Fecha_final" name="Fecha_final">
-        </div>
-        <div class="form-group">
-            <label >Imagenes:</label>
-            <input type="file" name="img" multiple (change)="onImgChange($event)">
-        </div>
-        <div class="form-group">
-          <label>Documentos:</label>
-            <input type="file" name="img" multiple (change)="onFileChange($event)" >
-        </div>
-        <button class="btn btn-success btn-block" (click)="edit ? ActualizarViaje() : saveViaje()">{{edit== true ? 'Editar' : 'Crear Salia a terreno'}}
-        </button>
-      </form> 
+      </div>
     </div>
-  </div>
 </div>

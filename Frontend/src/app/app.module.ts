@@ -18,13 +18,8 @@ import { PresentacionesComponent } from './Componentes/presentaciones/presentaci
 import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
 import { ReportesComponent } from './Componentes/reportes/reportes.component';
 
-<<<<<<< HEAD
 //servicios
-=======
-//services
->>>>>>> 022080ae8db759c4f770bb00af6c235c0530b383
 import { ViajesService } from './services/viajes.service';
-
 import {PresentacionesService} from './services/presentaciones.service';
 
 @NgModule({

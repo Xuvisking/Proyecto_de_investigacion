@@ -20,7 +20,7 @@ export class ViajesFromComponent implements OnInit {
     Fecha_final:new Date,
     Motivo:'',
     Lugar:'',
-    Proyecto_Proy_ID:1,
+    Proyecto_Proy_ID:null,
     Descripcion:''
   }
   aux:Date=new Date;
@@ -30,12 +30,8 @@ export class ViajesFromComponent implements OnInit {
   documentos:Array<File>;
 
   constructor(private viajes:ViajesService, private router: Router, private activatedRoute: ActivatedRoute,private http:HttpClient) { }
-<<<<<<< HEAD
     urlImg="http://localhost:3000/5d0427599bd5f.jpeg";
 
-=======
-  urlImg="http://localhost:3000/5d0427599bd5f.jpeg";
->>>>>>> 022080ae8db759c4f770bb00af6c235c0530b383
   ngOnInit(): void {
     //si existe un parametro en la ruta significa que tengo que actualizar el viaje del id que me pasaron por parametro
     const params = this.activatedRoute.snapshot.params;
@@ -63,9 +59,9 @@ export class ViajesFromComponent implements OnInit {
         res => {
           console.log('viaje actualizado con exito')
          console.log(res);
-          
           //actualizar imagenes y/o docuemntos
-          this.router.navigate(['/viajes']);
+
+          this.router.navigate(['viajes']);
         },
         err => console.error(err)
       )
@@ -120,32 +116,26 @@ export class ViajesFromComponent implements OnInit {
     );
   }
   saveViaje(){
-<<<<<<< HEAD
-    delete this.viaje.Viaje_ID;
-=======
->>>>>>> 022080ae8db759c4f770bb00af6c235c0530b383
-    this.viajes.postViajeProyecto(this.viaje)
+    if(this.viaje.Lugar!=''){
+      delete this.viaje.Viaje_ID;
+      this.viaje.Proyecto_Proy_ID=this.proyecto_id;
+      this.viajes.postViajeProyecto(this.viaje)
       .subscribe(
         res => {
           console.log('viaje registrado con exito')
           this.Ultimo_viaje=res;
           this.guardarRutasImg();
           this.subirImagenes();
+          this.router.navigate(['/viajes']);
         },
         err => console.error(err)
       )
+    }else{
+      console.log("parametros nulos")
+      this.router.navigate(['/viajes']);
+    }
       
   }
-<<<<<<< HEAD
-=======
-  Id_ultimo_viaje(){
-    this.viajes.getUltimoViaje(1)
-      .subscribe(
-        res => {
-          this.viaje_id=res;
-          console.log(res);
-          console.log(this.viaje_id)
->>>>>>> 022080ae8db759c4f770bb00af6c235c0530b383
 
   guardarRutasImg(){
     //con esto tengo el id del ultimo viaje creado y tambien tengo el id del proyecto

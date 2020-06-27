@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PresentacionesService } from 'src/app/services/presentaciones.service';
-import {presentacion} from '../../models/presentaciones';
+import {presentacion,Doc_presentacion} from '../../models/presentaciones';
 import {HttpClient} from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-presentaciones-form',
   templateUrl: './presentaciones-form.component.html',
@@ -9,9 +10,10 @@ import {HttpClient} from '@angular/common/http';
 })
 export class PresentacionesFormComponent implements OnInit {
 
-  
+  proyecto_id=1;
   documentos:Array<File>;
   presentacion:presentacion={
+    Presentacion_ID:null,
     Titulo:'',
     Fecha:'',
     Lugar:'',
@@ -19,7 +21,8 @@ export class PresentacionesFormComponent implements OnInit {
     Descripcion:'',
     Proyecto_Proy_ID:null
   }
-  constructor(private presen:PresentacionesService,private http:HttpClient) { }
+  Ultima_presentacion:any;
+  constructor(private presen:PresentacionesService,private router: Router,private activatedRoute: ActivatedRoute,private http:HttpClient) { }
   ngOnInit(): void {
   }
 
@@ -41,5 +44,53 @@ export class PresentacionesFormComponent implements OnInit {
       (res)=>console.log(res),
       (err)=>console.log(err)
     );
+  }
+  savePresentacion(){
+    if(this.presentacion.Lugar!=''){
+      delete this.presentacion.Presentacion_ID;
+      this.presentacion.Proyecto_Proy_ID=this.proyecto_id;
+      console.log(this.presentacion);
+      this.presen.postPresentacion(this.presentacion)
+      .subscribe(
+        res => {
+          console.log('viaje registrado con exito')
+          this.Ultima_presentacion=res;
+          console.log(this.Ultima_presentacion);
+          this.guardarRutasDoc();
+          this.subirDoc();
+          this.router.navigate(['/presentaciones']);
+        },
+        err => console.error(err)
+      )
+    }else{
+      console.log("parametros nulos")
+      this.router.navigate(['/presentaciones']);
+    }
+  }
+  guardarRutasDoc(){
+    //con esto tengo el id del ultimo viaje creado y tambien tengo el id del proyecto
+    //luego 
+    var inserRutaDoc:Doc_presentacion={
+      URL:'',
+      Presentacion_Presentacion_ID:this.Ultima_presentacion[0].Presentacion_ID,
+      Presentacion_Proyecto_Proy_ID:this.proyecto_id,
+      Nombre:''
+    };
+
+    for (let doc of this.documentos){
+      inserRutaDoc.Nombre=doc.name;
+      inserRutaDoc.URL='localhost:3000/download/'+doc.name;
+      console.log(inserRutaDoc);
+      debugger
+      this.presen.postDoc(inserRutaDoc)
+      .subscribe(
+        res => {
+          console.log(`se a agregado la ruta de ${inserRutaDoc.Nombre} correctamente a la bd!`);
+          console.log(res);
+        },
+        err => console.error(err)
+      )
+    }
+
   }
 }

@@ -34,7 +34,7 @@ const routes: Routes = [
   }
   ,
   {
-    path:"presentacion",
+    path:"presentaciones",
     component:PresentacionesComponent
   },
   {
@@ -43,7 +43,6 @@ const routes: Routes = [
   }
 
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

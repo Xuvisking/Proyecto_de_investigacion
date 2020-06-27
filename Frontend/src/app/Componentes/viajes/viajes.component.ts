@@ -11,8 +11,6 @@ export class ViajesComponent implements OnInit {
   viajes: any=[];
   //guarda en el arreglo el viaje con el id seleccionado
   vjs: any=[];
-  //guarda la pos del viaje selcciones
-  viajeID:number;
   //para mostrar o no el listado de viajes
   bool:boolean=true;
   //traer este valor por localStorage o por parametro url
@@ -21,7 +19,6 @@ export class ViajesComponent implements OnInit {
   
 
   ngOnInit(): void {
-<<<<<<< HEAD
     this.getViajesProyecto();
   }
   mostrarViaje(viaje_id:string){
@@ -39,9 +36,6 @@ export class ViajesComponent implements OnInit {
   }
   getViajesProyecto(){
     this.viaje.getViajesProyecto(this.proyecto_id).subscribe(
-=======
-    this.viaje.getViajesID(1).subscribe(
->>>>>>> 022080ae8db759c4f770bb00af6c235c0530b383
       res=>{
         this.viajes=res;
         console.log(this.viajes)
