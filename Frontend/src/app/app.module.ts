@@ -13,13 +13,29 @@ import { HomeComponent } from './Componentes/home/home.component';
 
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
-import { ReportesComponent } from './Componentes/reportes/reportes.component';
 
+<<<<<<< HEAD
 //services
 import { ViajesService } from './services/viajes.service';
 import { ProyectoComponent } from './proyecto/proyecto.component';
+=======
+import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
+import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
+import { ReportesComponent } from './Componentes/reportes/reportes.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+>>>>>>> 07da7606e6d7dea1e7ecfa00a61532117752ac8b
 
+import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
+import { ProyectoComponent } from './Componentes/Proyecto/Proyecto.component';
+import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
 
+//servicios
+import { ViajesService } from './services/viajes.service';
+import {PresentacionesService} from './services/presentaciones.service';
+import { Gestionmiembros } from './services/gestionmiembros.service';
+import { gestionproyectoservice } from './services/gestionproyecto.service';
+import { ProyectoService } from './services/proyecto.service';
+import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
 
 @NgModule({
   declarations: [
@@ -29,16 +45,34 @@ import { ProyectoComponent } from './proyecto/proyecto.component';
     HomeComponent,
     ViajesComponent,
     ViajesFromComponent,
+<<<<<<< HEAD
     ReportesComponent,
     ProyectoComponent
+=======
+    PresentacionesComponent,
+    PresentacionesFormComponent,
+    ReportesComponent,
+    GetionmiembrosComponent,
+    ProyectoComponent,
+    GestionproyectoComponent,
+    InvitacionComponent,
+>>>>>>> 07da7606e6d7dea1e7ecfa00a61532117752ac8b
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
-  providers: [ViajesService],
-  bootstrap: [AppComponent]
+  providers: [
+    ViajesService,
+    PresentacionesService,
+    Gestionmiembros,
+    gestionproyectoservice,
+    ProyectoService],
+    
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

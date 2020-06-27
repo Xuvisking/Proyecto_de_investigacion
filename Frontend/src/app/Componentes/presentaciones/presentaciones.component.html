@@ -1,0 +1,53 @@
+<div *ngIf="bool==true" class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    Presentaciones
+                    <button class="btn btn-success btn-sm" [routerLink]="['/presentaciones/create']" >+
+                    </button>
+                </div>
+                
+                <div class="card-body  ">
+                    <ul  class="list-group ">
+                        <li *ngFor="let presentacion of presentaciones| paginate: { itemsPerPage: 3, currentPage: p };let iteracion=index" class="list-group-item d-flex justify-content-between align-items-center">
+                            <a (click)="mostrarPresentacion(presentacion.Presentacion_ID)">{{presentacion.Titulo}}</a>
+                            <div>
+                                <button class="btn btn-dark btn-sm" [routerLink]="['update',presentacion.Presentacion_ID]" >edit</button>
+                                <button class="btn btn-danger btn-sm" (click)="deletePresentacion(presentacion.Presentacion_ID)" >x</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="bool==false" class="container">
+    <div class="row">
+        <div class="col-6 mx-auto mt-2">
+            <div class="">
+                <div class="card" >
+                    <button class="btn btn-danger" (click)="volver()">volver</button>
+                    <h3 class="card-header text-center text-primary"> {{PresentacionAux.Titulo}}</h3>
+                    <div class="card-body">
+                        <h4 class=""></h4>
+                        <p>Fecha: {{PresentacionAux.Fecha |date}}</p>
+                        <p>Lugar: {{PresentacionAux.Lugar}}</p>
+                        <p>Presentador:{{PresentacionAux.Presentador}}</p>
+                        <p>Descripcion: {{PresentacionAux.Descripcion}}</p>
+                        <p>Documentos:</p>
+                            <ul class="list-group list-group-flush">
+                                <li *ngFor="let documento of documentos" class="list-group-item">
+                                    <a [href]="documento.URL">{{documento.Nombre}}</a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

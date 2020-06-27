@@ -2,8 +2,6 @@ var express = require('express');
 var http = require('http');
 var app = express();
 var cors = require('cors');
-<<<<<<< HEAD
-=======
 var morgan = require('morgan');
 const multer =require('multer');
 
@@ -26,23 +24,18 @@ app.post('/viajes/multi/img',upload.array('files'),(req,res) =>{
     
 });
 
->>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
 //mensaje al inicio del server
-
 app.get('/', (req, res) => {
         res.status(200).send("Welcome to API REST")
 })
 
-    //inicia el servidor y se muestra en consola
+//inicia el servidor y se muestra en consola
 http.createServer(app).listen(3000, () => {
     console.log('Server started at http://localhost:3000');
 });
 
-// const mysqlConnection = require('../Backend/servidor/bd.configuracion/database')
-
 //----------------middlewares----------------
 app.get('/download/:documento', function(req, res){
-
     //se obtiene el valor de params para saber el nombre del archivo que se quiere descargar
     const documento=req.params.documento;
     //se crear la ruta de donde guardamos los archivos 
@@ -70,11 +63,13 @@ app.use(cors({origin:'*'}));
 //Para ver ficheros 
 //---------------Rutas----------------------
 //routes
-app.use(require('./servidor/rutas/usuarios'));
 app.use(require('./servidor/rutas/eventos'));
 app.use(require('./servidor/rutas/reportes'));
-<<<<<<< HEAD
 app.use(require('./servidor/rutas/presentacion'));
-=======
 app.use(require('./servidor/rutas/usuarios'));
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
+app.use(require('./servidor/rutas/formularios'));
+app.use(require('./servidor/rutas/proyectos'));
+app.use(require('./servidor/rutas/grupos'));
+app.use(require('./servidor/rutas/documentos'));
+app.use(require('./servidor/rutas/mienbros_proyectos'));
+app.use(require('./servidor/rutas/login'));

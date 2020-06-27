@@ -2,44 +2,69 @@ const express = require('express');
 const router = express.Router();
 
 //traemos la conexion con la db
-const mysqlConnection = require('../bd.configuracion/database');
-
-//Crear Evento
+const mysqlConnection = require('../database');
 console.log('Rutas de Presentaciones');
-router.post('/presentacion/create', (req, res) => {
 
+//Actualizar cambio
+router.put('/presentaciones/update', (req, res) => {
+    console.log(req.body);
+    const {Titulo,Fecha,Lugar,Presentador,Descripcion,Presentacion_ID} = req.body;
+    const query = `UPDATE presentacion SET Titulo=?,Fecha=?,Lugar=?,Presentador=?,Descripcion=? WHERE Presentacion_ID=?`;
+    mysqlConnection.query(query, [Titulo,Fecha,Lugar,Presentador,Descripcion,Presentacion_ID], (err, rows, fields) => {
+        if (!err) {
+            console.log("Viaje Actualizado con exito!");
+            res.json(rows.changedRows);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Crear presentacion
+router.post('/presentaciones/create', (req, res) => {
     const { Titulo,Fecha,Lugar,Presentador,Descripcion,Proyecto_Proy_ID } = req.body;
-    const query ='INSERT INTO Presentacion( Titulo,Fecha,Lugar,Presentador,Descripcion,Proyecto_Proy_ID) VALUES (?,?,?,?,?,?)';
+    const query ='INSERT INTO Presentacion(Titulo,Fecha,Lugar,Presentador,Descripcion,Proyecto_Proy_ID) VALUES (?,?,?,?,?,?)';
     mysqlConnection.query(query, [Titulo,Fecha,Lugar,Presentador,Descripcion,Proyecto_Proy_ID], (err, rows, fields) => {
         if (!err) {
-            console.log(req);
-            res.json(rows);
             console.log("Presentacion creada con exito!");
+            console.log(Proyecto_Proy_ID);
+            res.redirect(`/ultimo/presentaciones/${Proyecto_Proy_ID}`);
         } else {
             console.log(err);
         }
     });
-    
+});
+//retorna el id del proyecto para guardar los documentos asociados a ese proyecto.
+router.get('/ultimo/presentaciones/:id_proyecto', (req, res) => {
+    const { id_proyecto} = req.params;
+    const query = `select * from presentacion where Proyecto_Proy_ID=? ORDER BY Presentacion_ID desc limit 1`;
+    mysqlConnection.query(query, [ id_proyecto ], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log(rows);
+            console.log("ultima presentacion retornado con exito");
+        } else {
+            console.log(err);
+        }
+    });
 });
 
-//Crear los multimedias del proyecto
-/*router.post('/viaje/multi/create', (req, res) => {
-    const { ID_viaje, URL } = req.body;
-    const query = `INSERT INTO viajes_multimedia(ID_viaje,URL) values(?,?)`;
-    mysqlConnection.query(query, [ID_viaje, URL], (err, rows, fields) => {
+//retornar una presentaacion en particular
+router.get('/presentacion/:id', (req, res) => {
+    const { id } = req.params;
+    const query = `select * from Presentacion where Presentacion_ID=?`;
+    mysqlConnection.query(query, [id], (err, rows, fields) => {
         if (!err) {
-            console.log(req);
             res.json(rows);
-            console.log("Multimedia de viaje creada con exito!");
+            console.log("Presentacion retornada "+ id);
         } else {
             console.log(err);
         }
     });
 });
-*/
-//retornar viajes
-router.get('/presentacion/:id', (req, res) => {
-    
+
+//retornar presentaciones de un proyecto
+router.get('/presentaciones/:id', (req, res) => {
     const { id } = req.params;
     const query = `select * from Presentacion where Proyecto_Proy_ID=?`;
     mysqlConnection.query(query, [id], (err, rows, fields) => {
@@ -52,9 +77,44 @@ router.get('/presentacion/:id', (req, res) => {
     });
     
 });
+//retorna los docuemntos asociado a una presentacion
+router.get('/presentaciones/documentos/:presentacion_id', (req, res) => {
+    const { presentacion_id} = req.params;
+    const query = `select * from documetos_presentacion where Presentacion_Presentacion_ID=?`;
+    mysqlConnection.query(query, [presentacion_id], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Documentos de Presentacion retornadas con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+    
+});
 
-
-
+router.delete('/presentaciones/delete/:Presentacion_ID', (req, res) => {
+    const { Presentacion_ID} = req.params;
+    const query = `delete from presentacion where Presentacion_ID=?`;
+    mysqlConnection.query(query, [ Presentacion_ID], (err, rows, fields) => {
+        if (!err) {Presentacion_ID
+            console.log("Presentacion Eliminada con exito!");
+            res.json(rows.changedRows);
+        } else {
+            console.log(err);
+        }
+    });
+});
+router.post('/presentaciones/multi/create', (req, res) => {
+    const { Nombre, Presentacion_Presentacion_ID, Presentacion_Proyecto_Proy_ID, URL} = req.body;
+    const query = `insert into documetos_presentacion(URL,Presentacion_Presentacion_ID,Presentacion_Proyecto_Proy_ID,Nombre) values(?,?,?,?)`;
+    mysqlConnection.query(query, [ Nombre, Presentacion_Presentacion_ID, Presentacion_Proyecto_Proy_ID, URL], (err, rows, fields) => {
+        if (!err) {
+            console.log("URL docuemnto agregado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
 
 
 module.exports = router;
