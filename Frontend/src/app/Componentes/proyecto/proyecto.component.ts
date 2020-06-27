@@ -24,7 +24,10 @@ export class ProyectoComponent implements OnInit {
   }
 
   edit: boolean = false;
-
+  boolPresentacion:boolean=false;
+  boolViajes:boolean=false;
+  i:number=0;
+  j:number=0;
   constructor(private ProyectoData : ProyectoService,  private router: Router , private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -41,5 +44,22 @@ export class ProyectoComponent implements OnInit {
           err => console.log(err)
         )
     }
+  }
+  mostrarPresentacion(){
+    this.i=this.i+1;
+    if (this.i%2==1){
+      this.boolPresentacion=true;
+    }else{
+      this.boolPresentacion=false;
+    }
+  }
+  mostrarViaje(){
+    this.j=this.j+1;
+    if (this.j%2==1){
+      this.boolViajes=true;
+    }else{
+      this.boolViajes=false;
+    }
+
   }
 }
