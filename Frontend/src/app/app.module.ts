@@ -32,7 +32,8 @@ import {PresentacionesService} from './services/presentaciones.service';
     ViajesComponent,
     ViajesFromComponent,
     PresentacionesComponent,
-    PresentacionesFormComponent
+    PresentacionesFormComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
