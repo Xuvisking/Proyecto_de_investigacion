@@ -1,1 +1,0 @@
-INSERT INTO Reporte(Nombre,Fecha_inicial,Fecha_final,Proyecto_Proy_ID) VALUES ('NuevaPrueba',"2017-06-15","2017-10-15",2);

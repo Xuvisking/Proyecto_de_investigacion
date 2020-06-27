@@ -1,0 +1,72 @@
+<div class="col-12 my-2">
+  <p class="font-weight-bold">Gestion miembros de proyectos</p>
+</div>
+<div class="container mx-auto">
+  <div class="row">
+    <div class="col-11 my-2">
+      <div class="card">
+        <div class="card-body" >
+          <p class="font-weight-bold">Cambiar nombre al proyecto</p>
+          <form>
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" name="title" [(ngModel)]="cnombre.Nombre" #ctrl="ngModel" placeholder="" class="form-control" autofocus>
+            </div>
+            <button type="submit" class="btn btn-primary" (click) = "ModificarNombre()" routerLink="/proyecto/{{Proy_ID}}">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-11 my-2">
+      <div class="card">
+        <div class="card-body" >
+          <p class="font-weight-bold">Cambiar descripcion al proyecto</p>
+          <form>
+            <div class="form-group">
+              <label>descripcion</label>
+              <textarea name="title" [(ngModel)]="cdescripcion.Descripcion" rows="6" placeholder="" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="ModificarDescripcion()" routerLink="/proyecto/{{Proy_ID}}">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-11 my-2">
+      <div class="card ">
+        <div class="card-body" >
+          <p class="font-weight-bold">Cambiar estado del proyecto</p>
+          <form>
+            <div class="form-group">
+              <select name = "Estado" id="" class="form-control" [(ngModel)]="cestado.Estado">
+                <option value = "En preparativos" >En preparativos</option>
+                <option value = "En Desarrollo" >En desarrollo</option>
+                <option value = "Finalizado" >Finalizado</option>
+              </select>
+             </div>
+            <button type="submit" class="btn btn-primary" (click)="ModificarEstado()" routerLink="/proyecto/{{Proy_ID}}" >Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-11 my-2">
+      <div class="card ">
+        <div class="card-body" >
+          <p class="font-weight-bold">Eliminar Proyecto</p>
+          <form>
+            <div class="alert alert-danger" role="alert">
+              Al momento de hacer click en el boton de eliminar, se realizara el proceso de borrado de proyecto junto a toda su documentación inmediatamente. 
+            </div>
+            <button type="submit" class="btn btn-primary"  (click)="EliminarProyecto()" >Eliminar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

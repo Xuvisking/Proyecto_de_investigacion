@@ -1,0 +1,51 @@
+<div class="col-6 mt-2 mx-auto">
+  <div class="card">
+    <h3 class="card-header text-center">Gestion miembros de proyectos</h3>
+    <div class="card-body">
+      <p class="font-weight-bold">Invitar usuario al proyecto</p>
+      <form>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="title" [(ngModel)]="useryproyec.Email" placeholder="Ejemplo@mail.com" class="form-control" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="invitarmiembro()">Enviar</button>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <p class="font-weight-bold">Eliminar miembro del proyecto</p>
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Seleccione miembro a eliminar</label>
+          <select class="form-control" [(ngModel)]="useryproyecID.users_User_ID" name="users_User_ID" id="exampleFormControlSelect1">
+            <option *ngFor="let usernotjp of usernojplist"  [value]="usernotjp.users_User_ID">
+              {{usernotjp.users_User_ID}}
+            </option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="eliminarmienbro()">Enviar</button>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <p class="font-weight-bold">Cambiar Jefe de Proyecto</p>
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Seleccione miembro a otorgar Jefe de Proyecto</label>
+          <select class="form-control" [(ngModel)]="cambiarpriv.users_User_ID" name="users_User_ID" id="exampleFormControlSelect1">
+            <option *ngFor="let usernotjp of usernojplist"  [value]="usernotjp.users_User_ID">
+              {{usernotjp.users_User_ID}}
+            </option>
+          </select>
+        </div>
+        <div class="alert alert-danger" role="alert">
+          Realizando esta accion se te eliminara como Jefe de Proyecto
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="cambiarJP()">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+

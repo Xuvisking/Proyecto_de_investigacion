@@ -3,7 +3,7 @@ const router = express.Router();
 var cors = require('cors');
 var app = express();
 //traemos la conexion con la db
-const mysqlConnection = require('../bd.configuracion/database')
+const mysqlConnection = require('../database')
 const multer = require('multer');
 
 

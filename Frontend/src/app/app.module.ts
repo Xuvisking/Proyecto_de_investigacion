@@ -19,9 +19,17 @@ import { PresentacionesFormComponent } from './Componentes/presentaciones-form/p
 import { ReportesComponent } from './Componentes/reportes/reportes.component';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
+import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
+import { ProyectoComponent } from './Componentes/Proyecto/Proyecto.component';
+import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
+
 //servicios
 import { ViajesService } from './services/viajes.service';
 import {PresentacionesService} from './services/presentaciones.service';
+import { Gestionmiembros } from './services/gestionmiembros.service';
+import { gestionproyectoservice } from './services/gestionproyecto.service';
+import { ProyectoService } from './services/proyecto.service';
+import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +41,11 @@ import {PresentacionesService} from './services/presentaciones.service';
     ViajesFromComponent,
     PresentacionesComponent,
     PresentacionesFormComponent,
-    
+    ReportesComponent,
+    GetionmiembrosComponent,
+    ProyectoComponent,
+    GestionproyectoComponent,
+    InvitacionComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +54,14 @@ import {PresentacionesService} from './services/presentaciones.service';
     FormsModule,
     NgxPaginationModule
   ],
-  providers: [ViajesService,PresentacionesService],
-  bootstrap: [AppComponent]
+  providers: [
+    ViajesService,
+    PresentacionesService,
+    Gestionmiembros,
+    gestionproyectoservice,
+    ProyectoService],
+    
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
