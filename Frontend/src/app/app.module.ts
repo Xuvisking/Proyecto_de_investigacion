@@ -17,6 +17,7 @@ import { ReportesComponent } from './Componentes/reportes/reportes.component';
 
 //services
 import { ViajesService } from './services/viajes.service';
+import { ProyectoComponent } from './proyecto/proyecto.component';
 
 
 
@@ -28,7 +29,8 @@ import { ViajesService } from './services/viajes.service';
     HomeComponent,
     ViajesComponent,
     ViajesFromComponent,
-    ReportesComponent
+    ReportesComponent,
+    ProyectoComponent
   ],
   imports: [
     BrowserModule,
