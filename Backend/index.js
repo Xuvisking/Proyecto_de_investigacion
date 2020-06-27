@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var app = express();
 var cors = require('cors');
+var morgan = require('morgan');
 const multer =require('multer');
 
 const storage=multer.diskStorage({
@@ -66,3 +67,9 @@ app.use(require('./servidor/rutas/eventos'));
 app.use(require('./servidor/rutas/reportes'));
 app.use(require('./servidor/rutas/presentacion'));
 app.use(require('./servidor/rutas/usuarios'));
+app.use(require('./servidor/rutas/formularios'));
+app.use(require('./servidor/rutas/proyectos'));
+app.use(require('./servidor/rutas/grupos'));
+app.use(require('./servidor/rutas/documentos'));
+app.use(require('./servidor/rutas/mienbros_proyectos'));
+app.use(require('./servidor/rutas/login'));

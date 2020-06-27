@@ -7,6 +7,10 @@ import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
 import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
 import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
+import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
+import { ProyectoComponent } from './Componentes/Proyecto/Proyecto.component';
+import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
+import { InvitacionComponent } from './Componentes/invitacion/invitacion.component'
 
 const routes: Routes = [
   { path:"",
@@ -40,6 +44,25 @@ const routes: Routes = [
   {
     path:"viajes/update/:id",
     component:ViajesFromComponent
+  },
+  { path:"proyecto/miembros/gestion",
+    component:GetionmiembrosComponent
+  },
+  {
+    path:"proyecto",
+    component:HomeComponent
+  },
+  {
+    path:"proyecto/:id",
+    component:ProyectoComponent
+  },
+  {
+    path:"proyecto/gestion/:id",
+    component:GestionproyectoComponent
+  },
+  {
+    path:"usuario/invitacion",
+    component:InvitacionComponent
   }
 
 ];

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //traemos la conexion con la db
-const mysqlConnection = require('../bd.configuracion/database');
+const mysqlConnection = require('../database');
 
 //Crear Evento
 console.log('Rutas de Reportes');
