@@ -39,14 +39,41 @@ router.post('/viajes/multi/img',uploadFnct('imagenes','files'),(req,res) =>{
         'message':'Imagenes agregar con exito!'
     });
 });
+//Actualizar cambio
+router.put('/viajes/update', (req, res) => {
+    console.log(req.body);
+    const { Fecha_inicial, Fecha_final, Motivo, Lugar, Descripcion, Viaje_ID} = req.body;
+    const query = `UPDATE viaje SET Fecha_inicial=?,Fecha_final=?,Motivo=?,Lugar=?,Descripcion=? WHERE Viaje_ID=?`;
+    mysqlConnection.query(query, [Fecha_inicial, Fecha_final, Motivo, Lugar, Descripcion ,Viaje_ID], (err, rows, fields) => {
+        if (!err) {
+            console.log("Viaje Actualizado con exito!");
+            res.json(rows.changedRows);
+        } else {
+            console.log(err);
+        }
+    });
+});
 
+//Actualizar cambio
+router.delete('/viajes/delete/:Viaje_Id', (req, res) => {
+    const { Viaje_Id} = req.params;
+    const query = `delete from viaje where Viaje_ID=?`;
+    mysqlConnection.query(query, [ Viaje_Id], (err, rows, fields) => {
+        if (!err) {
+            console.log("Viaje Eliminado con exito!");
+            res.json(rows.changedRows);
+        } else {
+            console.log(err);
+        }
+    });
+});
 //Crear Evento
 router.post('/viajes/create', (req, res) => {
     console.log(req.body);
-    const { Fecha_inicial, Fecha_final, motivo, lugar, Proyecto_Proy_ID, Descripcion} = req.body;
+    const { Fecha_inicial, Fecha_final, Motivo, Lugar, Proyecto_Proy_ID, Descripcion} = req.body;
     console.log(Proyecto_Proy_ID);
     const query = `INSERT INTO viaje(Fecha_inicial,Fecha_final,motivo,lugar,Proyecto_Proy_ID,Descripcion) values(?,?,?,?,?,?)`;
-    mysqlConnection.query(query, [Fecha_inicial, Fecha_final, motivo, lugar, Proyecto_Proy_ID, Descripcion], (err, rows, fields) => {
+    mysqlConnection.query(query, [Fecha_inicial, Fecha_final, Motivo, Lugar, Proyecto_Proy_ID, Descripcion], (err, rows, fields) => {
         if (!err) {
             console.log("Viaje creado con exito!");
             res.redirect(`/ultimo/viaje/${Proyecto_Proy_ID}`);
@@ -55,8 +82,6 @@ router.post('/viajes/create', (req, res) => {
             console.log(err);
         }
     });
-    
-    
 });
 
 //Crear los multimedias del proyecto

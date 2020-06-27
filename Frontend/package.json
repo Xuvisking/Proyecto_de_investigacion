@@ -11,7 +11,6 @@
   },
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@angular/animations": "~9.1.11",
     "@angular/common": "~9.1.11",
     "@angular/compiler": "~9.1.11",
@@ -23,16 +22,6 @@
     "@angular/router": "~9.1.11",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "@popperjs/core": "^2.4.2",
-=======
-    "@angular/animations": "^9.1.11",
-    "@angular/common": "^9.1.11",
-    "@angular/compiler": "^9.1.11",
-    "@angular/core": "^9.1.11",
-    "@angular/forms": "^9.1.11",
-    "@angular/platform-browser": "~9.1.11",
-    "@angular/platform-browser-dynamic": "~9.1.11",
-    "@angular/router": "^9.1.11",
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
     "boostrap": "^2.0.0",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",

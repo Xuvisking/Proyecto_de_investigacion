@@ -1,22 +1,30 @@
 
 <div *ngIf="bool==true" class="container">
     <div class="row">
-            
-        <div class="card">
-            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                Salidas a terreno
-                <button class="btn btn-success btn-sm" [routerLink]="['/viajes/create']" >+
-                </button>
-              </div>
-            
-            <div class="card-body">
-                <ul *ngFor="let viaje of viajes;let iteracion=index" class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <a (click)="mostrarViaje(viaje.Viaje_ID)">{{viaje.Lugar}}</a>
-                    </li>
-                </ul>
+        <div class="col-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    Salidas a terreno
+                    <button class="btn btn-success btn-sm" [routerLink]="['/viajes/create']" >+
+                    </button>
+                </div>
+                
+                <div class="card-body  ">
+                    <ul  class="list-group ">
+                        <li *ngFor="let viaje of viajes;let iteracion=index" class="list-group-item d-flex justify-content-between align-items-center">
+                            <a (click)="mostrarViaje(viaje.Viaje_ID)">{{viaje.Lugar}}</a>
+                            <div>
+                                <button class="btn btn-dark btn-sm" [routerLink]="['update',viaje.Viaje_ID]" >edit</button>
+                                <button class="btn btn-danger btn-sm" (click)="deleteviaje(viaje.Viaje_ID)" >x</button>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </div>
             </div>
+
         </div>
+        
     </div>
 </div>
  

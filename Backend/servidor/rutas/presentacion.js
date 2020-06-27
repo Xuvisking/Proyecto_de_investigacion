@@ -37,7 +37,7 @@ router.post('/presentacion/create', (req, res) => {
     });
 });
 */
-//retornar viajes
+//retornar presentaciones
 router.get('/presentacion/:id', (req, res) => {
     
     const { id } = req.params;

@@ -1,8 +1,9 @@
 export interface viaje {
-    Fecha_inicial?: string;
-    Fecha_final?:string;
-    motivo?: string;
-    lugar?: string;
+    Viaje_ID?:number;
+    Fecha_inicial?: Date;
+    Fecha_final?: Date;
+    Motivo?: string;
+    Lugar?: string;
     Proyecto_Proy_ID?:number;
     Descripcion?:string;
 };

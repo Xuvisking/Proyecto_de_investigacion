@@ -4,23 +4,23 @@
       <form action="">
         <div class="form-group">
           <label>Lugar:</label>
-          <input type="text" name="title" [(ngModel)]="viaje.lugar" placeholder="" class="form-control" autofocus>
+          <input type="text" [(ngModel)]="viaje.Lugar" name="Lugar" class="form-control">
         </div>
         <div class="form-group">
-          <label>motivo:</label>
-          <input name="description" [(ngModel)]="viaje.motivo" rows="2" placeholder="" class="form-control">
+          <label>Motivo:</label>
+          <input type="text" [(ngModel)]="viaje.Motivo" name="viaje.Motivo" rows="2" class="form-control">
         </div>
         <div class="form-group">
           <label>Descripcion:</label>
-          <textarea name="description" [(ngModel)]="viaje.Descripcion" rows="2" placeholder="" class="form-control"></textarea>
+          <textarea [(ngModel)]="viaje.Descripcion" name="viaje.Descripcion" rows="2" class="form-control"></textarea>
         </div>
         <div class="form-group">
-          <label for="start">Start date:</label>
-            <input type="date" name="start" [(ngModel)]="viaje.Fecha_inicial" value="viaje.Fecha_Ini">
+          <label for="start">Fecha inicio:</label>
+            <input type="date" name="start" [(ngModel)]="viaje.Fecha_inicial" name="Fecha_inicial">
         </div>
         <div class="form-group">
-          <label for="start">End date:</label>
-            <input type="date" name="end" [(ngModel)]="viaje.Fecha_final" value="viaje.Fecha_Ini">
+          <label for="start">Fecha fin:</label>
+            <input type="date" name="end" [(ngModel)]="viaje.Fecha_final" name="Fecha_final">
         </div>
         <div class="form-group">
             <label >Imagenes:</label>
@@ -30,8 +30,9 @@
           <label>Documentos:</label>
             <input type="file" name="img" multiple (change)="onFileChange($event)" >
         </div>
-        <button class="btn btn-success btn-block" (click)="saveViaje()">Resgistrar Salida a terreno
+        <button class="btn btn-success btn-block" (click)="edit ? ActualizarViaje() : saveViaje()">{{edit== true ? 'Editar' : 'Crear Salia a terreno'}}
         </button>
+        
       </form> 
     </div>
   </div>

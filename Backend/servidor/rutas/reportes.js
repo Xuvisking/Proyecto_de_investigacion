@@ -7,20 +7,10 @@ const mysqlConnection = require('../bd.configuracion/database');
 //Crear Evento
 console.log('Rutas de Reportes');
 router.post('/reportes/create', (req, res) => {
-
-<<<<<<< HEAD
     const { Nombre,Fecha_Inicial,Fecha_Final, Proyecto_Proy_ID } = req.body;
     const query ='INSERT INTO Reporte(Nombre, Fecha_inicial, Fecha_final, Proyecto_Proy_ID) VALUES (?,?,?,?)';
     mysqlConnection.query(query, [Nombre,Fecha_Inicial,Fecha_Final,Proyecto_Proy_ID], (err, rows, fields) => {
-=======
-    const { Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID } = req.body;
-    const query = `INSERT INTO viaje(Fecha_Ini,Fecha_Fin,motivo,lugar,Proyecto_Proy_ID) values(?,?,?,?,?)`;
-    mysqlConnection.query(query, [Fecha_Ini, Fecha_Fin, motivo, lugar, Proyecto_Proy_ID], (err, rows, fields) => {
-<<<<<<< HEAD
-=======
->>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
+
         if (!err) {
             console.log(req);
             res.json(rows);
@@ -29,19 +19,7 @@ router.post('/reportes/create', (req, res) => {
             console.log(err);
         }
     });
-<<<<<<< HEAD
-    mysqlConnection.end()
-=======
-<<<<<<< HEAD
-    
-=======
-<<<<<<< HEAD
-
-=======
-    mysqlConnection.end()
->>>>>>> b7f6893bfe91d7298c69380a6f863262e86f7a98
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
+    mysqlConnection.end();
 });
 
 //Crear los multimedias del proyecto

@@ -26,7 +26,6 @@ const routes: Routes = [
   },
   {
     path:"viajes/create",
-<<<<<<< HEAD
     component:ViajesFromComponent
   },
   {
@@ -37,9 +36,10 @@ const routes: Routes = [
   {
     path:"presentacion",
     component:PresentacionesComponent
-=======
-    component: ViajesFromComponent
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
+  },
+  {
+    path:"viajes/update/:id",
+    component:ViajesFromComponent
   }
 
 ];

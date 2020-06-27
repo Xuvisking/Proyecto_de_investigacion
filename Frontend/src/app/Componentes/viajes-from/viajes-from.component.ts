@@ -1,9 +1,5 @@
 import { Component, OnInit,HostBinding } from '@angular/core';
-<<<<<<< HEAD
-import { viaje } from 'src/app/models/viajes';
-=======
 import { viaje, viaje_id, fotos_viaje } from 'src/app/models/viajes';
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
 import {ViajesService} from '../../services/viajes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
@@ -14,31 +10,63 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./viajes-from.component.css']
 })
 export class ViajesFromComponent implements OnInit {
-
+  //actualizar viaje
+  edit:boolean=false;
+  viaje_ID:string;
+  //crear viaje
   viaje: viaje={
-    Fecha_inicial:'',
-    Fecha_final:'',
-    motivo: '',
-    lugar: '',
+    Viaje_ID:null,
+    Fecha_inicial:new Date,
+    Fecha_final:new Date,
+    Motivo:'',
+    Lugar:'',
     Proyecto_Proy_ID:1,
     Descripcion:''
   }
+  aux:Date=new Date;
   proyecto_id=1;
   Ultimo_viaje:any;
   imagenes:Array<File>;
   documentos:Array<File>;
 
   constructor(private viajes:ViajesService, private router: Router, private activatedRoute: ActivatedRoute,private http:HttpClient) { }
-<<<<<<< HEAD
     urlImg="http://localhost:3000/5d0427599bd5f.jpeg";
-=======
-<<<<<<< HEAD
 
-=======
-  urlImg="http://localhost:3000/5d0427599bd5f.jpeg";
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
   ngOnInit(): void {
+    //si existe un parametro en la ruta significa que tengo que actualizar el viaje del id que me pasaron por parametro
+    const params = this.activatedRoute.snapshot.params;
+    if (params.id) {
+      this.viajes.getViajesID(params.id)
+        .subscribe(
+          res => {
+            this.viaje= res[0];
+            console.log(this.viaje)
+            //this.viaje.Fecha_inicial=new Date(`${this.viaje.Fecha_inicial.getFullYear()}-${this.viaje.Fecha_inicial.getMonth()}-${this.viaje.Fecha_inicial.getDate()}`);
+            let fecha = new Date(this.viaje.Fecha_final);
+            console.log(typeof fecha)
+            this.edit = true;
+            console.log(this.edit);
+          },
+          err => console.log(err)
+        )
+    }
+  }
+
+  ActualizarViaje(){
+    delete this.viaje.Proyecto_Proy_ID;
+    this.viajes.updateViaje(this.viaje)
+      .subscribe(
+        res => {
+          console.log('viaje actualizado con exito')
+         console.log(res);
+          
+          //actualizar imagenes y/o docuemntos
+          this.router.navigate(['/viajes']);
+        },
+        err => console.error(err)
+      )
+
+
   }
 
   onImgChange(e){
@@ -88,14 +116,7 @@ export class ViajesFromComponent implements OnInit {
     );
   }
   saveViaje(){
-<<<<<<< HEAD
-    console.log(this.viaje.Fecha_final);
-=======
-<<<<<<< HEAD
-    console.log(this.viaje);
-    this.viajes.postViajeProyecto(this.viaje)
-=======
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
+    delete this.viaje.Viaje_ID;
     this.viajes.postViajeProyecto(this.viaje)
       .subscribe(
         res => {
@@ -108,17 +129,6 @@ export class ViajesFromComponent implements OnInit {
       )
       
   }
-<<<<<<< HEAD
-=======
-  Id_ultimo_viaje(){
-    this.viajes.getUltimoViaje(1)
->>>>>>> c9dee85ef48a3dfa3729f3aa48b78c36931f3027
-      .subscribe(
-        res => {
-          this.viaje_id=res;
-          console.log(res);
-          console.log(this.viaje_id)
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
 
   guardarRutasImg(){
     //con esto tengo el id del ultimo viaje creado y tambien tengo el id del proyecto

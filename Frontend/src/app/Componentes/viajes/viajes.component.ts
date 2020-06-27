@@ -15,18 +15,13 @@ export class ViajesComponent implements OnInit {
   viajeID:number;
   //para mostrar o no el listado de viajes
   bool:boolean=true;
-
+  //traer este valor por localStorage o por parametro url
+  proyecto_id:number=1;
   constructor(private viaje:ViajesService) { }
   
 
   ngOnInit(): void {
-    this.viajes.getViajesProyecto(1).subscribe(
-      res=>{
-        this.viajes=res;
-        console.log(this.viajes)
-      },
-      err=>console.log(err)
-    )
+    this.getViajesProyecto();
   }
   mostrarViaje(viaje_id:string){
     this.bool=false;
@@ -37,9 +32,27 @@ export class ViajesComponent implements OnInit {
         this.vjs=viaje;
       }
     }
-    
   }
   volver(){
     this.bool=true;
+  }
+  getViajesProyecto(){
+    this.viaje.getViajesProyecto(this.proyecto_id).subscribe(
+      res=>{
+        this.viajes=res;
+        console.log(this.viajes)
+        },
+      err=>console.log(err)
+    )
+  }
+  deleteviaje(id:number) {
+    this.viaje.deleteViaje(id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.getViajesProyecto();
+        },
+        err => console.error(err)
+      )
   }
 }

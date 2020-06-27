@@ -18,14 +18,11 @@ export class ViajesService {
   getViajesID(id_viaje:number){
     return this.http.get(`${this.API_URI}/viaje/${id_viaje}`);
   }
-<<<<<<< HEAD
   postViajeProyecto(viaje:viaje){
     return this.http.post(`${this.API_URI}/viajes/create`,viaje);
-=======
-
-  postViajeProyecto(viajes:viaje){
-    return this.http.post(`${this.API_URI}/viajes/create`,viajes);
->>>>>>> c54e2c49dff5931334ad14a7493aa51fd2e5a020
+  }
+  updateViaje(viaje:viaje){
+    return this.http.put(`${this.API_URI}/viajes/update`,viaje);
   }
   subirImagenes(formData){
     return this.http.post(`${this.API_URI}/viajes/multi/img`,formData);
@@ -41,6 +38,9 @@ export class ViajesService {
   }
   getUltimoViaje(id_proyecto:number):Observable<any>{
     return this.http.get(`${this.API_URI}/ultimo/viaje/:id_proyecto${id_proyecto}`);
+  }
+  deleteViaje(viaje_id:number){
+    return this.http.delete(`${this.API_URI}/viajes/delete/${viaje_id}`);
   }
 
 }
