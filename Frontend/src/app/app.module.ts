@@ -21,6 +21,8 @@ import { InvitacionComponent } from './Componentes/invitacion/invitacion.compone
 import { ReunionesComponent } from './Componentes/reuniones/reuniones.component';
 import { ProyectoComponent } from "./Componentes/proyecto/proyecto.component";
 import { GenerarproyectoComponent } from './Componentes/generarproyecto/generarproyecto.component';
+import { DocumentosComponent } from './Componentes/documentos/documentos.component';
+import { DocumentosFormComponent } from './Componentes/documentos-form/documentos-form.component';
 
 //servicios
 import { ViajesService } from './services/viajes.service';
@@ -29,6 +31,7 @@ import { Gestionmiembros } from './services/gestionmiembros.service';
 import { gestionproyectoservice } from './services/gestionproyecto.service';
 import { ProyectoService } from './services/proyecto.service';
 import { ReunionesService } from './services/reuniones.service';
+import { DocumentosService } from './services/documentos.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { ReunionesService } from './services/reuniones.service';
     InvitacionComponent,
     ReunionesComponent,
     GenerarproyectoComponent,
+    DocumentosComponent,
+    DocumentosFormComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,8 @@ import { ReunionesService } from './services/reuniones.service';
     Gestionmiembros,
     gestionproyectoservice,
     ProyectoService,
-    ReunionesService
+    ReunionesService,
+    DocumentosService
   ],
     
   bootstrap: [AppComponent],

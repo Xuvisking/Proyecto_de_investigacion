@@ -1,0 +1,25 @@
+<div *ngIf="bool==true" class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    Documentos
+                    <button *ngIf="gestion==true" class="btn btn-success btn-sm" (click)="enrutar()" >+</button>
+                </div>
+                
+                <div class="card-body  ">
+                    <ul  class="list-group ">
+                        <li *ngFor="let doc of Documentacion| paginate: { itemsPerPage: 3, currentPage: pagina};let iteracion=index" class="list-group-item d-flex justify-content-between align-items-center">
+                            <a (click)="mostrarDocumento(doc.Doc_ID)">{{doc.Nombre}}</a>
+                            <div>
+                                <button *ngIf="gestion==true" class="btn btn-dark btn-sm" (click)="update()" >edit</button>
+                                <button *ngIf="gestion==true" class="btn btn-danger btn-sm" (click)="borrarDocumento(doc.Doc_ID)" >x</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <pagination-controls (pageChange)="pagina = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

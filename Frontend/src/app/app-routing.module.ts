@@ -12,6 +12,8 @@ import { ProyectoComponent } from "./Componentes/proyecto/proyecto.component";
 import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
 import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
 import { GenerarproyectoComponent } from './Componentes/generarproyecto/generarproyecto.component';
+import { DocumentosComponent } from './Componentes/documentos/documentos.component';
+import { DocumentosFormComponent } from './Componentes/documentos-form/documentos-form.component';
 
 const routes: Routes = [
   { path:"",
@@ -71,8 +73,19 @@ const routes: Routes = [
   {
     path:"proyecto/generar/proyectos",
     component:GenerarproyectoComponent
+  },
+  {
+    path:"proyecto/documentos/crear",
+    component:DocumentosFormComponent
+  },
+  {
+    path:"proyecto/documentos/update/:id",
+    component:DocumentosFormComponent
+  },
+  {
+    path:"proyecto/documentos",
+    component:DocumentosComponent
   }
-
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
