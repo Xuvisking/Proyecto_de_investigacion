@@ -30,6 +30,8 @@ import { Gestionmiembros } from './services/gestionmiembros.service';
 import { gestionproyectoservice } from './services/gestionproyecto.service';
 import { ProyectoService } from './services/proyecto.service';
 import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
+import { ReunionesComponent } from './Componentes/reuniones/reuniones.component';
+import {ReunionesService} from './services/reuniones.service'
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { InvitacionComponent } from './Componentes/invitacion/invitacion.compone
     ProyectoComponent,
     GestionproyectoComponent,
     InvitacionComponent,
+    ReunionesComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,9 @@ import { InvitacionComponent } from './Componentes/invitacion/invitacion.compone
     PresentacionesService,
     Gestionmiembros,
     gestionproyectoservice,
-    ProyectoService],
+    ProyectoService,
+    ReunionesService
+  ],
     
   bootstrap: [AppComponent],
   

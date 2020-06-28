@@ -6,6 +6,8 @@ import {ViajesService} from '../../services/viajes.service';
   styleUrls: ['./viajes.component.css']
 })
 export class ViajesComponent implements OnInit {
+
+  gestion:boolean=false;
   imagenes:any=["http://localhost:3000/alma.jpg","http://localhost:3000/eclipse%20solar.jpg"];
   //guarda todos los viajes del proyecto
   viajes: any=[];
@@ -53,5 +55,14 @@ export class ViajesComponent implements OnInit {
         },
         err => console.error(err)
       )
+  }
+  CambiarGestion(){
+    if(this.gestion == false){
+      this.gestion=true;
+    }
+    else{
+      this.gestion=false;
+    }
+    console.log(this.gestion)
   }
 }

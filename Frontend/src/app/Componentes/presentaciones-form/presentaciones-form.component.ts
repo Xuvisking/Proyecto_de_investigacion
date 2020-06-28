@@ -25,7 +25,7 @@ export class PresentacionesFormComponent implements OnInit {
   constructor(private presen:PresentacionesService,private router: Router,private activatedRoute: ActivatedRoute,private http:HttpClient) { }
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
-    if (params.id) {
+    if (params.id && params.id!=0) {
       this.presen.getPresentacion(params.id)
         .subscribe(
           res => {

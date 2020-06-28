@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input } from '@angular/core';
 import { PresentacionesService } from 'src/app/services/presentaciones.service';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 @Component({
@@ -7,6 +7,7 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
   styleUrls: ['./presentaciones.component.css']
 })
 export class PresentacionesComponent implements OnInit {
+  gestion:boolean=false;
   //llenar arreglos con documentos
   documentos:any;
   //guarda todos los viajes del proyecto
@@ -21,7 +22,7 @@ export class PresentacionesComponent implements OnInit {
   proyecto_id:number=1;
   //confiar en urls
   trustedDashboardUrl : SafeUrl;
-  p: number = 1;
+  pagina: number = 1;
   constructor(private present:PresentacionesService,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -66,6 +67,15 @@ export class PresentacionesComponent implements OnInit {
         },
         err => console.error(err)
       )
+  }
+  CambiarGestion(){
+    if(this.gestion == false){
+      this.gestion=true;
+    }
+    else{
+      this.gestion=false;
+    }
+    console.log(this.gestion)
   }
 
 }

@@ -5,17 +5,16 @@
             <div class="card">
                 <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                     Salidas a terreno
-                    <button class="btn btn-success btn-sm" [routerLink]="['/viajes/create']" >+
+                    <button *ngIf="gestion==true" class="btn btn-success btn-sm" [routerLink]="['/viajes/create']" >+
                     </button>
                 </div>
-                
                 <div class="card-body  ">
                     <ul  class="list-group" style="height: 200px;">
                         <li *ngFor="let viaje of viajes| paginate: { itemsPerPage: 3, currentPage: p };let iteracion=index" class="list-group-item d-flex justify-content-between align-items-center">
                             <a (click)="mostrarViaje(viaje.Viaje_ID)">{{viaje.Lugar}}</a>
                             <div>
-                                <button class="btn btn-dark btn-sm" [routerLink]="['update',viaje.Viaje_ID]" >edit</button>
-                                <button class="btn btn-danger btn-sm" (click)="deleteviaje(viaje.Viaje_ID)" >x</button>
+                                <button *ngIf="gestion==true" class="btn btn-dark btn-sm" [routerLink]="['update',viaje.Viaje_ID]" >edit</button>
+                                <button *ngIf="gestion==true" class="btn btn-danger btn-sm" (click)="deleteviaje(viaje.Viaje_ID)" >x</button>
                             </div>
                         </li>
                     </ul>
@@ -34,8 +33,8 @@
             <div class="">
                 <button class="btn btn-danger" (click)="volver()">volver</button>
                 <div class="card" >
+                    <h3 class="card-header text-center text-primary">{{vjs.Lugar}}</h3>
                     <div class="card-body">
-                        <h4 class="text-primary">{{vjs.Lugar}}</h4>
                         <p>Motivo: {{vjs.Motivo}}</p>
                         <p>Fecha inicio: {{vjs.Fecha_inicial|date}}</p>
                         <p>Fecha fin: {{vjs.Fecha_final|date}}</p>
@@ -47,7 +46,6 @@
                                     <img [src]="img" alt="" class="card-img-top">
                                 </div>
                             </div>
-                            
                         </div>
                         <p>Documentos: </p>
                             <ul class="list-group list-group-flush">
@@ -64,4 +62,6 @@
         </div>
     </div>
 </div>
+<button class="btn btn-success btn-sm" (click)="CambiarGestion()">Cambiar gestion
+</button>
 
