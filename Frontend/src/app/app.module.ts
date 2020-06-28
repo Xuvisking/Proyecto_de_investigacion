@@ -28,6 +28,7 @@ import { DocumentosComponent } from './Componentes/documentos/documentos.compone
 import { DocumentosFormComponent } from './Componentes/documentos-form/documentos-form.component';
 
 //servicios
+import { DocumentosService } from './services/documentos.service';
 import { ViajesService } from './services/viajes.service';
 import { PresentacionesService } from './services/presentaciones.service';
 import { Gestionmiembros } from './services/gestionmiembros.service';
@@ -35,7 +36,7 @@ import { gestionproyectoservice } from './services/gestionproyecto.service';
 import { ProyectoService } from './services/proyecto.service';
 import {ReunionesService} from './services/reuniones.service';
 import { ReunionFormComponent } from './Componentes/reunion-form/reunion-form.component'
-import { DocumentosService } from './services/documentos.service';
+
 
 
 @NgModule({
