@@ -17,6 +17,21 @@ router.get('/mienbros_proyectos/memberlist/:Proyecto_Proy_ID', (req, res) => {
     });
 });
 
+//Obtener listas nombre de miembros del proyecto FUNCIONA y se OCUPA
+router.get('/mienbros_proyectos/userlist/:User_ID', (req, res) => {
+    const { User_ID } = req.params;
+    const query = `SELECT Usuario FROM users WHERE User_ID = ?`;
+    mysqlConnection.query(query, [User_ID], (err, rows, fields) => {
+        if (!err) {
+            console.log(User_ID);
+            res.json(rows);
+            console.log("ID user retornado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 //Retornar User ID a base de un email FUNCIONA y se OCUPA
 router.get('/mienbros_proyectos/getuseridbyemail/:Email', (req, res) => {
     const { Email } = req.params;

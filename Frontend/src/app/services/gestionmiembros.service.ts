@@ -51,6 +51,9 @@ export class Gestionmiembros {
   Get_listmemberID(Proyecto_ID: number) {
     return this.http.get(`${this.API_URI}/mienbros_proyectos/memberlist/${Proyecto_ID}`);
   }
+  Get_listmemberUsername(username: number) {
+    return this.http.get(`${this.API_URI}/mienbros_proyectos/userlist/${username}`);
+  }
   Eliminarmember(sen_IDS: userandproyectoID) {
     return this.http.post(`${this.API_URI}/mienbros_proyectos/eliminarmiembro`,sen_IDS);
   }

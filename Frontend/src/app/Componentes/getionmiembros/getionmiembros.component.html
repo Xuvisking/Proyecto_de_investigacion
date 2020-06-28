@@ -19,8 +19,8 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1">Seleccione miembro a eliminar</label>
           <select class="form-control" [(ngModel)]="useryproyecID.users_User_ID" name="users_User_ID" id="exampleFormControlSelect1">
-            <option *ngFor="let usernotjp of usernojplist"  [value]="usernotjp.users_User_ID">
-              {{usernotjp.users_User_ID}}
+            <option *ngFor="let user of usernamelist"  [value]="user.Usuario">
+              {{user.Usuario}}
             </option>
           </select>
         </div>
@@ -35,8 +35,8 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1">Seleccione miembro a otorgar Jefe de Proyecto</label>
           <select class="form-control" [(ngModel)]="cambiarpriv.users_User_ID" name="users_User_ID" id="exampleFormControlSelect1">
-            <option *ngFor="let usernotjp of usernojplist"  [value]="usernotjp.users_User_ID">
-              {{usernotjp.users_User_ID}}
+            <option *ngFor="let user of usernamelist"  [value]="user.Usuario">
+              {{user.Usuario}}
             </option>
           </select>
         </div>
