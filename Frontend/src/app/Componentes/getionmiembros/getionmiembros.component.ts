@@ -20,6 +20,7 @@ export class GetionmiembrosComponent implements OnInit {
   JPandpermiso: any =[];
   userlist: any =[];
   usernojplist: any =[];
+  usernamelist: any =[];
   usuario: userandjpid = {
     users_User_ID: null,
     Proyecto_Proy_ID: null
@@ -69,7 +70,15 @@ export class GetionmiembrosComponent implements OnInit {
     this.gestionMiembros.Get_listmemberIDnoJP(this.useridnojp).subscribe(
       res => {
         this.usernojplist = res;
-        console.log(res);
+        for (let index = 0; index < this.usernojplist.length; index++) {
+          this.gestionMiembros.Get_listmemberUsername(this.usernojplist[index].users_User_ID).subscribe(
+            res => {
+              this.usernamelist.push(res[0]);
+            },
+            err => console.log(err)
+          )
+          
+        } 
       },
       err => console.log(err)
     )
