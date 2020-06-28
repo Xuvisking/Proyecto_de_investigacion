@@ -63,6 +63,7 @@ app.use(cors({origin:'*'}));
 //Para ver ficheros 
 //---------------Rutas----------------------
 //routes
+app.use(require('./servidor/rutas/reuniones'));
 app.use(require('./servidor/rutas/eventos'));
 app.use(require('./servidor/rutas/reportes'));
 app.use(require('./servidor/rutas/presentacion'));
@@ -74,3 +75,4 @@ app.use(require('./servidor/rutas/documentos'));
 app.use(require('./servidor/rutas/mienbros_proyectos'));
 app.use(require('./servidor/rutas/login'));
 app.use(require('./servidor/rutas/generarproyecto'));
+app.use(require('./servidor/rutas/home'));

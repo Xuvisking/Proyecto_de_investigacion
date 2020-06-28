@@ -11,6 +11,8 @@ import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiem
 import { ProyectoComponent } from "./Componentes/proyecto/proyecto.component";
 import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
 import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
+import { ReunionesComponent } from './Componentes/reuniones/reuniones.component';
+import { ReunionFormComponent} from './Componentes/reunion-form/reunion-form.component';
 import { GenerarproyectoComponent } from './Componentes/generarproyecto/generarproyecto.component';
 import { DocumentosComponent } from './Componentes/documentos/documentos.component';
 import { DocumentosFormComponent } from './Componentes/documentos-form/documentos-form.component';
@@ -71,6 +73,17 @@ const routes: Routes = [
     component:InvitacionComponent
   },
   {
+    path:"reuniones",
+    component:ReunionesComponent
+  },
+  {
+    path:"reuniones/create",
+    component:ReunionFormComponent
+  }
+  ,{
+    path:"reuniones/update/:id",
+    component:ReunionFormComponent
+  },{
     path:"proyecto/generar/proyectos",
     component:GenerarproyectoComponent
   },
