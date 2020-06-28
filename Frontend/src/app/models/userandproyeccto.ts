@@ -17,3 +17,10 @@ export interface cambiarprivilegio {
     users_User_ID?: number;
     Proyecto_Proy_ID?: number;
 } 
+export interface users{
+    User_ID?:number;
+    email?:string;
+    password?:string;
+    usuario ?:string;
+    descripcion?:string;
+}

@@ -10,8 +10,9 @@ import { PresentacionesComponent } from './Componentes/presentaciones/presentaci
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
 import { ProyectoComponent } from './Componentes/Proyecto/Proyecto.component';
 import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
-import { InvitacionComponent } from './Componentes/invitacion/invitacion.component'
-
+import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
+import { ReunionesComponent } from './Componentes/reuniones/reuniones.component';
+import { ReunionFormComponent} from './Componentes/reunion-form/reunion-form.component';
 const routes: Routes = [
   { path:"",
     component: InicioComponent
@@ -67,6 +68,17 @@ const routes: Routes = [
   {
     path:"usuario/invitacion",
     component:InvitacionComponent
+  },
+  {
+    path:"reuniones",
+    component:ReunionesComponent
+  },{
+    path:"reuniones/create",
+    component:ReunionFormComponent
+  }
+  ,{
+    path:"reuniones/update/:id",
+    component:ReunionFormComponent
   }
 
 ];

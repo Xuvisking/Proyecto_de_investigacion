@@ -1,1 +1,59 @@
-<p>reuniones works!</p>
+<div *ngIf="bool==true" class="container">
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    Reuniones
+                    <button *ngIf="gestion==true" class="btn btn-success btn-sm" [routerLink]="['/reuniones/create']" >+
+                      </button>
+                </div>
+                
+                <div class="card-body  ">
+                    <ul  class="list-group ">
+                        <li *ngFor="let reunion of reuniones| paginate: { itemsPerPage: 3, currentPage: pagina};let iteracion=index" class="list-group-item d-flex justify-content-between align-items-center">
+                            <a (click)="mostrarReunion(reunion.Reunion_ID)">{{reunion.Titulo}}</a>
+                            <div>
+                                <button *ngIf="gestion==true" class="btn btn-dark btn-sm" [routerLink]="['update',reunion.Reunion_ID]" >edit</button>
+                                <button *ngIf="gestion==true" class="btn btn-danger btn-sm" (click)="deleteReunion(reunion.Reunion_ID)" >x</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <pagination-controls (pageChange)="pagina = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="bool==false" class="container">
+    <div class="row">
+        <div class="col-6 mx-auto mt-2">
+            <div class="">
+                <button class="btn btn-danger" (click)="volver()">volver</button>
+                <div class="card" >    
+                    <h4 class="card-header bg-dark text-white d-flex justify-content-between align-items-center"> {{ReunionAux.Titulo}}</h4>
+                    <div class="card-body">
+                        <h4 class=""></h4>
+                        <p>Fecha: {{ReunionAux.Fecha |date}}</p>
+                        <p>Lugar: {{ReunionAux.Lugar}}</p>
+                        <p>Descripcion: {{ReunionAux.Descripcion}}</p>
+                        <p>Participantes:</p>
+                            <ul class="list-group list-group-flush">
+                                <li *ngFor="let participante of participantes" class="list-group-item">
+                                    <p>{{participante.usuario}}</p>
+                                </li>
+                            </ul>
+                        <p>Documentos:</p>
+                            <ul class="list-group list-group-flush">
+                                <li *ngFor="let documento of documentos" class="list-group-item">
+                                    <a [href]="documento.URL">{{documento.Nombre}}</a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn btn-success btn-sm" (click)="CambiarGestion()">Cambiar gestion
+</button>
+  
