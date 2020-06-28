@@ -20,6 +20,7 @@ import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionp
 import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
 import { ReunionesComponent } from './Componentes/reuniones/reuniones.component';
 import { ProyectoComponent } from "./Componentes/proyecto/proyecto.component";
+import { GenerarproyectoComponent } from './Componentes/generarproyecto/generarproyecto.component';
 
 //servicios
 import { ViajesService } from './services/viajes.service';
@@ -46,6 +47,7 @@ import { ReunionesService } from './services/reuniones.service';
     GestionproyectoComponent,
     InvitacionComponent,
     ReunionesComponent,
+    GenerarproyectoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<div class="col-6 mt-2 mx-auto">
+  <div class="card">
+    <h3 class="card-header text-center">Generar nuevo proyecto</h3>
+    <div class="card-body">
+      <p class="font-weight-bold">Llene el formulario para crear un nuevo proyecto</p>
+      <form>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Nombre</label>
+            <textarea class="form-control" [(ngModel)]="send_form_proy.Nombre" name="Nombre" id="exampleFormControlTextarea1" rows="1"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Descripcion</label>
+            <textarea class="form-control" [(ngModel)]="send_form_proy.Descripcion" name="Descripcion" id="exampleFormControlTextarea1" rows="1"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary"(click)="enviarformulario()" >Enviar</button>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,8 @@ import { PresentacionesComponent } from './Componentes/presentaciones/presentaci
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
 import { ProyectoComponent } from "./Componentes/proyecto/proyecto.component";
 import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
-import { InvitacionComponent } from './Componentes/invitacion/invitacion.component'
+import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
+import { GenerarproyectoComponent } from './Componentes/generarproyecto/generarproyecto.component';
 
 const routes: Routes = [
   { path:"",
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path:"usuario/invitacion",
     component:InvitacionComponent
+  },
+  {
+    path:"proyecto/generar/proyectos",
+    component:GenerarproyectoComponent
   }
 
 ];
