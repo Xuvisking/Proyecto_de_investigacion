@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./presentaciones-form.component.css']
 })
 export class PresentacionesFormComponent implements OnInit {
+  //variables
   edit:boolean=false;
   proyecto_id=1;
   documentos:Array<File>;
@@ -22,8 +23,10 @@ export class PresentacionesFormComponent implements OnInit {
     Proyecto_Proy_ID:null
   }
   Ultima_presentacion:any;
+  //constructor
   constructor(private presen:PresentacionesService,private router: Router,private activatedRoute: ActivatedRoute,private http:HttpClient) { }
   ngOnInit(): void {
+    //si es que existe parametro es por que estamos en udpdate
     const params = this.activatedRoute.snapshot.params;
     if (params.id && params.id!=0) {
       this.presen.getPresentacion(params.id)
@@ -31,15 +34,13 @@ export class PresentacionesFormComponent implements OnInit {
           res => {
             this.presentacion= res[0];
             console.log(this.presentacion)
-            //this.viaje.Fecha_inicial=new Date(`${this.viaje.Fecha_inicial.getFullYear()}-${this.viaje.Fecha_inicial.getMonth()}-${this.viaje.Fecha_inicial.getDate()}`);
-            //let fecha = new Date(this.viaje.Fecha_final);
-            //console.log(typeof fecha)
+
             this.edit = true;
             console.log(this.edit);
           },
           err => console.log(err)
         )
-        }
+    }
   }
   ActualizarPresentacion(){
     delete this.presentacion.Proyecto_Proy_ID;
@@ -53,7 +54,6 @@ export class PresentacionesFormComponent implements OnInit {
         },
         err => console.error(err)
       )
-
 
   }
   onFileChange(e){

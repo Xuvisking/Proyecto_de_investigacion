@@ -12,9 +12,12 @@ import { LoginComponent } from './Componentes/login/login.component';
 import { HomeComponent } from './Componentes/home/home.component';
 import { ViajesComponent } from './Componentes/viajes/viajes.component';
 import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.component';
+
+//services
 import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
 import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
 import { ReportesComponent } from './Componentes/reportes/reportes.component';
+
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
 import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
 import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
@@ -28,7 +31,9 @@ import { PresentacionesService } from './services/presentaciones.service';
 import { Gestionmiembros } from './services/gestionmiembros.service';
 import { gestionproyectoservice } from './services/gestionproyecto.service';
 import { ProyectoService } from './services/proyecto.service';
-import { ReunionesService } from './services/reuniones.service';
+import {ReunionesService} from './services/reuniones.service';
+import { ReunionFormComponent } from './Componentes/reunion-form/reunion-form.component'
+
 
 @NgModule({
   declarations: [
@@ -39,6 +44,7 @@ import { ReunionesService } from './services/reuniones.service';
     ViajesComponent,
     ViajesFromComponent,
     ReportesComponent,
+    ProyectoComponent,
     PresentacionesComponent,
     PresentacionesFormComponent,
     ReportesComponent,
@@ -47,6 +53,7 @@ import { ReunionesService } from './services/reuniones.service';
     GestionproyectoComponent,
     InvitacionComponent,
     ReunionesComponent,
+    ReunionFormComponent,
     GenerarproyectoComponent,
   ],
   imports: [
