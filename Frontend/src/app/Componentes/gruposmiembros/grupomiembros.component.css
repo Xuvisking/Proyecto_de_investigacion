@@ -1,0 +1,41 @@
+* {
+    top: 0;
+    margin: 0;
+    left: 0;
+}
+
+#hero {
+    background-image: url('../../img/fondo2.jpg');
+    background-size: cover;
+    padding-top: 400px;
+    max-height: 400px;
+}
+
+.features-icons {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+
+.features-icons .features-icons-item {
+    max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+    height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+    font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+    font-size: 5rem;
+}
+
+.footer {
+    min-height: 60px;
+    width: 100%;
+    background-color: #343a40!important;
+    color: white;
+    text-align: center;
+}

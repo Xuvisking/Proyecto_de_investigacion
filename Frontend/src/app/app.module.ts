@@ -35,7 +35,8 @@ import { Gestionmiembros } from './services/gestionmiembros.service';
 import { gestionproyectoservice } from './services/gestionproyecto.service';
 import { ProyectoService } from './services/proyecto.service';
 import {ReunionesService} from './services/reuniones.service';
-import { ReunionFormComponent } from './Componentes/reunion-form/reunion-form.component'
+import { ReunionFormComponent } from './Componentes/reunion-form/reunion-form.component';
+import { HomeeComponent } from './Componentes/homee/homee.component'
 
 
 
@@ -60,7 +61,8 @@ import { ReunionFormComponent } from './Componentes/reunion-form/reunion-form.co
     ReunionFormComponent,
     GenerarproyectoComponent,
     DocumentosComponent,
-    DocumentosFormComponent
+    DocumentosFormComponent,
+    HomeeComponent
     
   ],
   imports: [
