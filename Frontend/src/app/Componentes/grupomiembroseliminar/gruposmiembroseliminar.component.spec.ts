@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { GrupoMiembrosEliminarComponent } from '../grupomiembroseliminar/grupomiembroseliminar.component';
 
@@ -14,6 +15,9 @@ describe('GrupoMiembroComponent', () => {
   }));
 
   beforeEach(() => {
+    imports: [
+      FormsModule
+    ]
     fixture = TestBed.createComponent(GrupoMiembrosEliminarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

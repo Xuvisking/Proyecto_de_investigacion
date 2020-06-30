@@ -37,7 +37,7 @@ router.get('/grupos/grupo/:Grupo_ID', (req, res) => {
 //muestra los grupos 
 router.get('/:User_ID/grupos', (req, res) => {
     const {User_ID} = req.params;
-    const query = `select Grupo.Nombre, Grupo.Descripcion, Grupo.URL, Grupo.Grupo_ID from Grupo_has_users,Grupo , users where Grupo_has_users.Grupo_Grupo_ID = Grupo.Grupo_ID and users.User_ID  = ? `;
+    const query = `select Grupo.Nombre, Grupo.Descripcion, Grupo.URL, Grupo.Grupo_ID from Grupo, Grupo_has_users, users where Grupo_has_users.Grupo_Grupo_ID = Grupo.Grupo_ID and users.User_ID  = ? `;
     mysqlConnection.query(query,[User_ID] ,(err, rows, fields) => {
         if (!err) {
             console.log('aaayaaa');

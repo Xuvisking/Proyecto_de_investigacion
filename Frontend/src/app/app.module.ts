@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
+
 //components
 import { AppComponent } from './app.component';
 import { InicioComponent } from './Componentes/inicio/inicio.component';
@@ -17,7 +18,7 @@ import { ViajesFromComponent } from './Componentes/viajes-from/viajes-from.compo
 import { PresentacionesComponent } from './Componentes/presentaciones/presentaciones.component';
 import { PresentacionesFormComponent } from './Componentes/presentaciones-form/presentaciones-form.component';
 import { ReportesComponent } from './Componentes/reportes/reportes.component';
-
+import { GrupoMiembrosEliminarComponent } from './Componentes/grupomiembroseliminar/grupomiembroseliminar.component';
 import { GetionmiembrosComponent } from './Componentes/getionmiembros/getionmiembros.component';
 import { GestionproyectoComponent } from './Componentes/gestionproyecto/gestionproyecto.component';
 import { InvitacionComponent } from './Componentes/invitacion/invitacion.component';
@@ -26,6 +27,13 @@ import { ProyectoComponent } from "./Componentes/proyecto/proyecto.component";
 import { GenerarproyectoComponent } from './Componentes/generarproyecto/generarproyecto.component';
 import { DocumentosComponent } from './Componentes/documentos/documentos.component';
 import { DocumentosFormComponent } from './Componentes/documentos-form/documentos-form.component';
+import { GrupoMiembroComponent } from './Componentes/gruposmiembros/grupomiembros.component';
+import { GrupoEliminarComponent } from './Componentes/gruposeliminar/grupoeliminar.component'
+import { GrupoListMiembrosComponent } from './Componentes/grupolistmiembros/grupolistmiembros.component'
+import { GrupoCrearComponent } from './Componentes/grupos/grupocrear.component';
+import { GrupoVerComponent } from './Componentes/grupover/grupover.component';
+import { GruposComponent } from './Componentes/grupos-list/grupos.component';
+import { GestionGruposComponent } from './Componentes/gestion-grupos/gestion-grupos.component';
 
 //servicios
 import { DocumentosService } from './services/documentos.service';
@@ -37,6 +45,13 @@ import { ProyectoService } from './services/proyecto.service';
 import {ReunionesService} from './services/reuniones.service';
 import { ReunionFormComponent } from './Componentes/reunion-form/reunion-form.component';
 import { HomeeComponent } from './Componentes/homee/homee.component'
+import { GrupoCrearService } from './services/grupocrear.service';
+import { GruposMiembrosService } from './services/gruposmiembros.service';
+import { GruposService } from './services/grupos.service';
+import { GrupoEliminarService } from './services/grupoeliminar.service';
+import { GrupoVerService } from './services/grupover.service';
+import { GrupoListMiembrosService } from './services/grupolistmiembros'; 
+import { GrupoMiembrosEliminarService } from './services/grupomiembroseliminar.service'
 
 
 
@@ -62,7 +77,16 @@ import { HomeeComponent } from './Componentes/homee/homee.component'
     GenerarproyectoComponent,
     DocumentosComponent,
     DocumentosFormComponent,
-    HomeeComponent
+    HomeeComponent,
+    GrupoMiembrosEliminarComponent,
+    GrupoMiembroComponent,
+    GrupoEliminarComponent,
+    GrupoListMiembrosComponent,
+    GrupoCrearComponent,
+    GrupoVerComponent,
+    GruposComponent,
+    GestionGruposComponent  
+    
     
   ],
   imports: [
@@ -79,7 +103,14 @@ import { HomeeComponent } from './Componentes/homee/homee.component'
     gestionproyectoservice,
     ProyectoService,
     ReunionesService,
-    DocumentosService
+    DocumentosService,
+    GrupoCrearService,
+    GruposMiembrosService,
+    GruposService,
+    GrupoEliminarService,
+    GrupoVerService,
+    GrupoListMiembrosService,
+    GrupoMiembrosEliminarService
   ],
     
   bootstrap: [AppComponent],
