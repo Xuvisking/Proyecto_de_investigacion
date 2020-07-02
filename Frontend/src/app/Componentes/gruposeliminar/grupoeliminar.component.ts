@@ -41,6 +41,7 @@ export class GrupoEliminarComponent implements OnInit {
       res => {
         this.variab = res;
         console.log(res);
+        alert('Grupo eliminado')
       },
       err => console.log(err)
     )

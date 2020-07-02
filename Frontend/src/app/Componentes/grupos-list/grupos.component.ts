@@ -52,12 +52,12 @@ export class GruposComponent implements OnInit {
   
     }
     informacionGrupo( id : number ): void{
-      this.router.navigate([ 'grupos','grupo', 1]);
+      this.router.navigate([ 'grupos','grupo', id]);
   
     }
     verMiembroGrupo (id : number) : void{
       console.log(id);
-      this.router.navigate([ 'grupo','miembros', 1]);
+      this.router.navigate([ 'grupo','miembros', id]);
   
     }
 }
