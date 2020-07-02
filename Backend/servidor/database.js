@@ -5,8 +5,13 @@ const mysql=require('mysql');
 const mysqlConnection = mysql.createConnection({
     host:'localhost',
     user:'root',
+<<<<<<< HEAD
     password:'julieta8810',
     database:'proyecto_de_investigacion',
+=======
+    password:'conforta',
+    database:'Proyecto_de_investigacion',
+>>>>>>> 23ccbd4c3ad7f0c06a367439d78023a0a7a70cd8
     port: 3306
 });
 //establecer el conexion

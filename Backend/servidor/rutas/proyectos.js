@@ -146,7 +146,7 @@ router.post('/proyectos/nombre/cambiar', (req, res) => {
 //Obetener Documentos
 router.get('/proyectos/documentos/:Proy_ID', (req, res) => {
     const { Proy_ID } = req.params;
-    const query = `select * from Documento where Proyecto_Pry_ID=?`;
+    const query = `select * from Documento where Proyecto_Proy_ID=?`;
     mysqlConnection.query(query, [Proy_ID], (err, rows, fields) => {
         if (!err) {
             res.json(rows);

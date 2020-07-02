@@ -1,0 +1,64 @@
+    <!-- Navbar-->
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container bg-light">
+          <a class="navbar-brand" href="#">Gestor de Proyectos</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+              <li class="nav-item active mx-2">
+                  <a class="nav-link" >Grupos<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item active mx-2">
+                  <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" href="#"><i class="fas fa-user-circle"></i></a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" href="#"><i class="fas fa-envelope-open-text"></i></a>
+              </li>
+              </ul>
+          </div>
+      </div>
+      </nav> 
+
+
+
+
+
+
+<div class="mx-auto" style="width: 590px;" >
+
+
+<head>
+  <title>Agregar un miembro</title>
+</head>
+
+<body>
+  <h1>Agregar un miembro : {{Grupo_ID}}</h1>
+<div class="card">
+    <div class="card-body">
+      <p class="font-weight-bold">Agregar</p>
+      <form>
+        <div class="form-group">
+          <label>El ID del grupo</label>
+          <input type="text" name="grupoid" [(ngModel)]="grupomiembros.Grupo_Grupo_ID" placeholder="" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+            <label>El ID del usuario</label>
+            <input type="text" name="descripcion" [(ngModel)]="grupomiembros.users_User_ID" placeholder="" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <label>Admin</label>
+          <input type="number" name="admin" [(ngModel)]="grupomiembros.Admin" placeholder="" class="form-control" default="0" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="AgregarMiembro()">Enviar</button>
+      </form>
+    </div>
+</div>
+</body>
+</div>
+
