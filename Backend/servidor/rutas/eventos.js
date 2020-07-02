@@ -97,6 +97,31 @@ router.post('/viaje/multi/create', (req, res) => {
     });
     
 });
+//crear doc
+router.post('/viaje/multi/doc/create', (req, res) => {
+    const {URL, Viaje_Viaje_ID, Viaje_Proyecto_Proy_ID, Nombre} = req.body;
+    const query = `insert into Viaje_documentos(URL,Viaje_Viaje_ID,Viaje_Proyecto_Proy_ID,Nombre) values (?,?,?,?);`;
+    mysqlConnection.query(query, [URL, Viaje_Viaje_ID, Viaje_Proyecto_Proy_ID, Nombre], (err, rows, fields) => {
+        if (!err) {
+            console.log("Doc de viaje creada con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+//retornar doc
+router.get('/viaje/multi/doc/:id_viaje', (req, res) => {
+    const { id_viaje } = req.params;
+    const query = `select * from Viaje_documentos where Viaje_Viaje_ID=?`;
+    mysqlConnection.query(query, [id_viaje], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("Documentos de viaje retornados con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
 
 //retornar viajes
 router.get('/ultimo/viaje/:id_proyecto', (req, res) => {
@@ -142,15 +167,14 @@ router.get('/viaje/:id', (req, res) => {
 //retornar todos el multimedia de un viaje
 router.get('/viajes/multi/:id_viaje', (req, res) => {
     const { id_viaje } = req.params;
-    const query = `select * from viajes_multimedia where ID_viaje=?;`;
+    const query = `select * from fotos_viaje where Viaje_Viaje_ID=?`;
     mysqlConnection.query(query, [id_viaje], (err, rows, fields) => {
         if (!err) {
             res.json(rows);
-            console.log("Viajes retornados con exito!");
+            console.log("Imagenes de viaje retornados con exito!");
         } else {
             console.log(err);
         }
     });
 });
-
 module.exports = router;

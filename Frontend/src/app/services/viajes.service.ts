@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { viaje, fotos_viaje } from '../models/viajes';
+import { viaje, fotos_viaje, doc_viaje } from '../models/viajes';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +33,17 @@ export class ViajesService {
   postImg(img:fotos_viaje){
     return this.http.post(`${this.API_URI}/viaje/multi/create`,img);
   }
+  postDoc(doc:doc_viaje){
+    return this.http.post(`${this.API_URI}/viaje/multi/doc/create`,doc);
+  }
   getDocumentos(documento:string){
     return this.http.get(`${this.API_URI}/download/${documento}`);
+  }
+  getListadoDocumentos(id_viaje:string){
+    return this.http.get(`${this.API_URI}/viaje/multi/doc/${id_viaje}`);
+  }
+  getImagenes(id_viaje:string){
+    return this.http.get(`${this.API_URI}/viajes/multi/${id_viaje}`);
   }
   getUltimoViaje(id_proyecto:number):Observable<any>{
     return this.http.get(`${this.API_URI}/ultimo/viaje/:id_proyecto${id_proyecto}`);

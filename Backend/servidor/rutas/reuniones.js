@@ -112,9 +112,9 @@ router.delete('/reuniones/delete/:Reunion_ID', (req, res) => {
     });
 });
 router.post('/reuniones/multi/create', (req, res) => {
-    const { Nombre, Reunion_Reunion_ID, Presentacion_Proyecto_Proy_ID, URL} = req.body;
-    const query = `insert into documetos_presentacion(URL,Reunion_Reunion_ID,Presentacion_Proyecto_Proy_ID,Nombre) values(?,?,?,?)`;
-    mysqlConnection.query(query, [ Nombre, Reunion_Reunion_ID, Presentacion_Proyecto_Proy_ID, URL], (err, rows, fields) => {
+    const { Nombre, Reunion_Reunion_ID, Reunion_Proyecto_Proy_ID, URL} = req.body;
+    const query = `insert into documentos_reunion(Nombre,Reunion_Reunion_ID,Reunion_Proyecto_Proy_ID,URL) values(?,?,?,?)`;
+    mysqlConnection.query(query, [ Nombre, Reunion_Reunion_ID, Reunion_Proyecto_Proy_ID, URL], (err, rows, fields) => {
         if (!err) {
             console.log("URL docuemnto agregado con exito!");
         } else {
