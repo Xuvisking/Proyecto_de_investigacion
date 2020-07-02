@@ -21,7 +21,6 @@ export class PresentacionesComponent implements OnInit {
   //traer este valor por localStorage o por parametro url
   proyecto_id:number=1;
   //confiar en urls
-  trustedDashboardUrl : SafeUrl;
   pagina: number = 1;
   constructor(private present:PresentacionesService,private sanitizer: DomSanitizer) { }
 
@@ -41,6 +40,7 @@ export class PresentacionesComponent implements OnInit {
     this.present.getDocumentos(this.PresentacionAux.Presentacion_ID).subscribe(
       res=>{
         this.documentos=res;
+        console.log(res);
       },
       err=>console.log(err)
     );
@@ -57,7 +57,12 @@ export class PresentacionesComponent implements OnInit {
       err=>console.log(err)
     )
   }
-  
+  sanarDoc(){
+    for(let i in this.documentos){
+      //this.ayudante=this.sanador.bypassSecurityTrustResourceUrl(this.documentos[i].URL);
+      this.documentos.push(this.sanitizer.bypassSecurityTrustUrl(this.documentos[i].URL));
+    }
+  }
   deletePresentacion(id:number) {
     this.present.deletePresentacion(id)
       .subscribe(

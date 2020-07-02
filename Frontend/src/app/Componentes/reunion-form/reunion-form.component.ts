@@ -79,6 +79,8 @@ export class ReunionFormComponent implements OnInit {
         res => {
           console.log('reunion actualizado con exito')
          console.log(res);
+          this.guardarRutasDoc();
+          this.subirDoc();
           //actualizar imagenes y/o docuemntos
           this.router.navigate(['reuniones']);
         },
@@ -172,14 +174,19 @@ export class ReunionFormComponent implements OnInit {
     //luego 
     var inserRutaDoc:Doc_reunion={
       URL:'',
-      Reunion_Reunion_ID:this.Ultima_reunion[0].Reunion_ID,
-      Presentacion_Proyecto_Proy_ID:this.proyecto_id,
+      Reunion_Reunion_ID:null,
+      Reunion_Proyecto_Proy_ID:this.proyecto_id,
       Nombre:''
     };
+    if(this.edit){
+      inserRutaDoc.Reunion_Reunion_ID=this.reunion.Reunion_ID;
+    }else{
+      inserRutaDoc.Reunion_Reunion_ID=this.Ultima_reunion[0].Reunion_ID;
+    }
     if(this.aux!=0){
       for (let doc of this.documentos){
             inserRutaDoc.Nombre=doc.name;
-            inserRutaDoc.URL='localhost:3000/download/'+doc.name;
+            inserRutaDoc.URL='http://localhost:3000/download/'+doc.name;
             console.log(inserRutaDoc);
             this.reunionServi.postDoc(inserRutaDoc)
             .subscribe(

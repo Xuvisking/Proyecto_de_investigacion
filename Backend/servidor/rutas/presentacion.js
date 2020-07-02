@@ -106,7 +106,7 @@ router.delete('/presentaciones/delete/:Presentacion_ID', (req, res) => {
 });
 router.post('/presentaciones/multi/create', (req, res) => {
     const { Nombre, Presentacion_Presentacion_ID, Presentacion_Proyecto_Proy_ID, URL} = req.body;
-    const query = `insert into documetos_presentacion(URL,Presentacion_Presentacion_ID,Presentacion_Proyecto_Proy_ID,Nombre) values(?,?,?,?)`;
+    const query = `insert into documetos_presentacion(Nombre,Presentacion_Presentacion_ID,Presentacion_Proyecto_Proy_ID,URL) values(?,?,?,?)`;
     mysqlConnection.query(query, [ Nombre, Presentacion_Presentacion_ID, Presentacion_Proyecto_Proy_ID, URL], (err, rows, fields) => {
         if (!err) {
             console.log("URL docuemnto agregado con exito!");
