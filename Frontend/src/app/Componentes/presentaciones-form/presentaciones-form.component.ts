@@ -50,6 +50,8 @@ export class PresentacionesFormComponent implements OnInit {
           console.log('Presentacion actualizado con exito')
          console.log(res);
           //actualizar imagenes y/o docuemntos
+          this.guardarRutasDoc();
+          this.subirDoc();
           this.router.navigate(['presentaciones']);
         },
         err => console.error(err)
@@ -102,14 +104,19 @@ export class PresentacionesFormComponent implements OnInit {
     //luego 
     var inserRutaDoc:Doc_presentacion={
       URL:'',
-      Presentacion_Presentacion_ID:this.Ultima_presentacion[0].Presentacion_ID,
+      Presentacion_Presentacion_ID:null,
       Presentacion_Proyecto_Proy_ID:this.proyecto_id,
       Nombre:''
     };
+    if(this.edit){
+      inserRutaDoc.Presentacion_Presentacion_ID=this.presentacion.Presentacion_ID;
+    }else{
+      inserRutaDoc.Presentacion_Presentacion_ID=this.Ultima_presentacion[0].Presentacion_ID;
+    }
 
     for (let doc of this.documentos){
       inserRutaDoc.Nombre=doc.name;
-      inserRutaDoc.URL='localhost:3000/download/'+doc.name;
+      inserRutaDoc.URL='http://localhost:3000/download/'+doc.name;
       console.log(inserRutaDoc);
       debugger
       this.presen.postDoc(inserRutaDoc)
@@ -121,6 +128,5 @@ export class PresentacionesFormComponent implements OnInit {
         err => console.error(err)
       )
     }
-
   }
 }

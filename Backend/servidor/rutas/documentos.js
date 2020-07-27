@@ -3,7 +3,7 @@ const router = express.Router();
 const mysqlConnection = require('../database');
 
 //Obetener Documento
-router.get('/proyectos/documentos/:Doc_ID', (req, res) => {
+router.get('/proyectos/documento/:Doc_ID', (req, res) => {
     const { Doc_ID } = req.params;
     const query = `select * from Documento where Doc_ID=?`;
     mysqlConnection.query(query, [Doc_ID], (err, rows, fields) => {
@@ -33,8 +33,8 @@ router.post('/proyectos/documentos/crear', (req, res) => {
 });
 
 //Eliminar Documento
-router.post('/proyectos/documentos/eliminar', (req, res) => {
-    const { Doc_ID } = req.body;
+router.get('/proyectos/documentos/eliminar/:Doc_ID', (req, res) => {
+    const { Doc_ID } = req.params;
     const query = `DELETE FROM Documento WHERE Doc_ID=?`;
     mysqlConnection.query(query, [Doc_ID], (err, rows, fields) => {
         if (!err) {
@@ -116,6 +116,21 @@ router.get('/proyectos/documentos/URL/:Doc_ID', (req, res) => {
             console.log(req);
             res.json(rows);
             console.log("URL conseguida");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Actualizar cambio
+router.post('/proyectos/documentos/update', (req, res) => {
+    console.log(req.body);
+    const {Nombre,Descripcion,URL,Doc_ID} = req.body;
+    const query = `UPDATE documento SET Nombre=?,Descripcion=?,URL=? WHERE Doc_ID=?`;
+    mysqlConnection.query(query, [Nombre,Descripcion,URL,Doc_ID], (err, rows, fields) => {
+        if (!err) {
+            console.log("Documento Actualizado con exito!");
+            res.json(rows.changedRows);
         } else {
             console.log(err);
         }

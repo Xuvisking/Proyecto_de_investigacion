@@ -48,4 +48,10 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  entrarGrupos(): void{
+    console.log(this.localusarid)
+    this.router.navigate([this.localusarid,'grupos' ])
+    
+  }
+
 }

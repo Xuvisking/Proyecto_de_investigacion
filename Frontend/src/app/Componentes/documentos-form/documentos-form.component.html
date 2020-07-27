@@ -1,0 +1,23 @@
+<div class="col-md-8 mx-auto">
+    <div class="card">
+            <h4 class="card-header bg-dark text-white d-flex justify-content-between align-items-center">Gestion de Documento</h4>
+            <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="Presentador" [(ngModel)]="documento.Nombre" rows="2" placeholder="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Descripcion:</label>
+                    <textarea name="description" [(ngModel)]="documento.Descripcion" rows="4" placeholder="" class="form-control"></textarea>
+                </div>
+                <div class="custom-file">
+                    <label class="custom-file-label">Archivo:</label>
+                    <input type="file" class="custom-file-input" name="document">
+                </div>
+                <button class="btn btn-success btn-block mt-2" (click)="tripaloski ? ActualizarDocumentacion() : NewDocumento()">{{tripaloski== true ? 'Actualizar' : 'Subir Documento nuevo'}}
+                </button>
+            </form> 
+        </div>
+    </div>
+</div>

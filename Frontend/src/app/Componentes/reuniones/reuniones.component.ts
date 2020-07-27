@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ReunionesService} from '../../services/reuniones.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-reuniones',
   templateUrl: './reuniones.component.html',
@@ -7,7 +8,7 @@ import {ReunionesService} from '../../services/reuniones.service';
 })
 export class ReunionesComponent implements OnInit {
 
-  constructor( private reunion:ReunionesService) { }
+  constructor( private reunion:ReunionesService,private sanitizer: DomSanitizer) { }
 
   participantes:any=[];
   gestion:boolean=false;
@@ -42,6 +43,7 @@ export class ReunionesComponent implements OnInit {
     this.reunion.getDocumentos(this.ReunionAux.Reunion_ID).subscribe(
       res=>{
         this.documentos=res;
+        this.sanarDoc();
       },
       err=>console.log(err)
     );
@@ -52,6 +54,12 @@ export class ReunionesComponent implements OnInit {
       },
       err=>console.log(err)
     );
+  }
+  sanarDoc(){
+    for(let i in this.documentos){
+      //this.ayudante=this.sanador.bypassSecurityTrustResourceUrl(this.documentos[i].URL);
+      this.documentos.push(this.sanitizer.bypassSecurityTrustUrl(this.documentos[i].URL));
+    }
   }
   volver(){
     this.bool=true;

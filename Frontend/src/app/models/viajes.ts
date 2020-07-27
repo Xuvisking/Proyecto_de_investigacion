@@ -16,6 +16,12 @@ export interface fotos_viaje {
     Viaje_Proyecto_Proy_ID?:number,
     Nombre?:string
 };
+export interface doc_viaje {
+    URL?:string,
+    Viaje_Viaje_ID?:number,
+    Viaje_Proyecto_Proy_ID?:number,
+    Nombre?:string
+};
 /*
 export interface viaje{
     Descripcion?:string,

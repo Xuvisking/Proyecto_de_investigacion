@@ -43,17 +43,14 @@
                         <div class="container">
                             <div class="row">
                                 <div *ngFor="let img of imagenes" class="col-6 my-1">
-                                    <img [src]="img" alt="" class="card-img-top">
+                                    <img [src]="img.URL" alt="" class="card-img-top">
                                 </div>
                             </div>
                         </div>
                         <p>Documentos: </p>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <a href="http://localhost:3000/download/FolletoAlma.pdf">Folleto Alma</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="http://localhost:3000/GU%C3%8DA%20%20n%C2%BA%20%205%20%208%C2%BA%20%20funciones.pdf">listado de participantes</a>
+                                <li *ngFor="let docu of documentos" class="list-group-item">
+                                    <a [href]="docu.URL">{{docu.Nombre}}</a>
                                 </li>
                             </ul>
                     </div>

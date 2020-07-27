@@ -1,0 +1,71 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+    <!-- Navbar-->
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container bg-light">
+          <a class="navbar-brand" href="#">Gestor de Proyectos</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+              <li class="nav-item active mx-2">
+                  <a class="nav-link" >Grupos<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item active mx-2">
+                  <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" href="#"><i class="fas fa-user-circle"></i></a>
+              </li>
+              <li class="nav-item mx-2">
+                  <a class="nav-link" href="#"><i class="fas fa-envelope-open-text"></i></a>
+              </li>
+              </ul>
+          </div>
+      </div>
+      </nav> 
+
+*<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="mx-auto"  >
+<div class="container section-ourTeam" >
+  <div class="row">
+    <div class="col-md-12 ourTeam-hedding text-center">
+      <h1>Miembros </h1>
+
+    </div>
+  </div>
+  <div  class="mx-auto" style="width: 1000px; ">     
+  <div class="row"  *ngFor="let grupo of users" >
+    <div class="col-md-4 col-sm-4 col-xs-12">
+      <div class="row section-success ourTeam-box text-center">
+        <div class="col-md-12 section1">
+        </div>
+        <div class="col-md-12 section2">
+          <p>{{grupo.Usuario}}</p>
+          <p> ID : {{grupo.User_ID}}</p>
+
+
+        </div>
+        <div class="col-md-12 section3">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+          <i class="fa fa-google-plus" aria-hidden="true"></i>
+          <i class="fa fa-dribbble" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</body>
+</html>
