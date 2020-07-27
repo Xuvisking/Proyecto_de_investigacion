@@ -37,8 +37,8 @@ router.post('/proyectos/crear', (req, res) => {
 });
 
 //Eliminar Proyecto
-router.post('/proyectos/eliminar', (req, res) => {
-    const { Proy_ID } = req.body;
+router.get('/proyectos/eliminar/:Proy_ID', (req, res) => {
+    const { Proy_ID } = req.params;
     const query = `DELETE FROM Proyecto WHERE Proy_ID=?`;
     mysqlConnection.query(query, [Proy_ID], (err, rows, fields) => {
         if (!err) {

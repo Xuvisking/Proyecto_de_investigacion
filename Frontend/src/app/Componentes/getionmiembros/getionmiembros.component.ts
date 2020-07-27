@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 import { Gestionmiembros } from '../../services/gestionmiembros.service'
 import { userandjpid } from '../../models/IDJPIDuser'
-import { userandproyecto , userandproyectoID ,userIDnoJP, cambiarprivilegio } from '../../models/userandproyeccto'
+import { userandproyecto , useridandname , userandproyectoID ,userIDnoJP, cambiarprivilegio } from '../../models/userandproyeccto'
 import { Invproyecto } from '../../models/invproyecto'
 
 @Component({
@@ -16,11 +16,18 @@ export class GetionmiembrosComponent implements OnInit {
   actualJPID: number;
   actualProyID: number;
 
+  aux: any =[];
+  usernamereturn: string;
   response: string; 
   JPandpermiso: any =[];
   userlist: any =[];
   usernojplist: any =[];
   usernamelist: any =[];
+  arrayuseridlist: any =[]
+  userandusernamelist: useridandname={
+    User_ID:null,
+    Usuario:null
+  }
   usuario: userandjpid = {
     users_User_ID: null,
     Proyecto_Proy_ID: null
@@ -74,6 +81,14 @@ export class GetionmiembrosComponent implements OnInit {
           this.gestionMiembros.Get_listmemberUsername(this.usernojplist[index].users_User_ID).subscribe(
             res => {
               this.usernamelist.push(res[0]);
+              this.aux.push(res[0].Usuario);
+              this.gestionMiembros.Get_UserIDbyusername(this.aux[index]).subscribe(
+                res => {
+                  this.arrayuseridlist.push({"User_ID": res[0].User_ID ,"Usuario":this.aux[index]});
+                  console.log(this.arrayuseridlist);
+                },
+                err => console.log(err)
+              )
             },
             err => console.log(err)
           )
@@ -93,6 +108,7 @@ export class GetionmiembrosComponent implements OnInit {
         this.gestionMiembros.Invmiemb(this.invtuser).subscribe(
           res => {
             console.log(res);
+            alert("Usuario invitado!")
           },
           err => console.log(err)
         )
@@ -106,6 +122,7 @@ export class GetionmiembrosComponent implements OnInit {
     this.gestionMiembros.Eliminarmember(this.useryproyecID).subscribe(
       res => {
         console.log(res);
+        alert("Usuario eliminado!")
       },
       err => console.log(err)
     )
@@ -125,4 +142,5 @@ export class GetionmiembrosComponent implements OnInit {
       )
     }
   }
+
 }

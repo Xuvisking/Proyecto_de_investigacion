@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 const mysqlConnection = require('../database');
 
+//Obtener User_ID por username
+router.get('/mienbros_proyectos/getuseridbyusername/:Usuario', (req, res) => {
+    const { Usuario } = req.params;
+    const query = `SELECT User_ID FROM users WHERE Usuario = ?`;
+    mysqlConnection.query(query, [Usuario], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+            console.log("ID user retornado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 //Obtener listas de miembros del proyecto FUNCIONA y se OCUPA
 router.get('/mienbros_proyectos/memberlist/:Proyecto_Proy_ID', (req, res) => {
     const { Proyecto_Proy_ID } = req.params;
@@ -47,6 +61,7 @@ router.get('/mienbros_proyectos/getuseridbyemail/:Email', (req, res) => {
     });
 });
 
+
 //Retornar username a base de un ID FUNCIONA y se OCUPA
 router.get('/User_ID/getuseridbyemail/:User_ID', (req, res) => {
     const { User_ID } = req.params;
@@ -54,6 +69,21 @@ router.get('/User_ID/getuseridbyemail/:User_ID', (req, res) => {
     mysqlConnection.query(query, [User_ID], (err, rows, fields) => {
         if (!err) {
             console.log(User_ID);
+            res.json(rows);
+            console.log("ID user retornado con exito!");
+        } else {
+            console.log(err);
+        }
+    });
+});
+
+//Retornar User_ID a base de un username FUNCIONA y se OCUPA
+router.get('/User_ID/getuserisbyusername/:Usuario', (req, res) => {
+    const { Usuario } = req.params;
+    const query = `SELECT User_ID FROM users WHERE Usuario = ?`;
+    mysqlConnection.query(query, [Usuario], (err, rows, fields) => {
+        if (!err) {
+            console.log(Usuario);
             res.json(rows);
             console.log("ID user retornado con exito!");
         } else {
