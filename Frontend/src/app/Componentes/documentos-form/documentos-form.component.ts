@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class DocumentosFormComponent implements OnInit {
-  tripaloski:boolean=false;
+  auxiliar:boolean=false;
   Proy_ID:number;
   gestion:boolean = true;
 
@@ -48,8 +48,8 @@ export class DocumentosFormComponent implements OnInit {
             this.documento= res[0];
             this.Proy_ID = this.documento.Proy_ID
             console.log(this.documento)
-            this.tripaloski = true;
-            console.log(this.tripaloski);
+            this.auxiliar = true;
+            console.log(this.auxiliar);
           },
           err => console.log(err)
         )

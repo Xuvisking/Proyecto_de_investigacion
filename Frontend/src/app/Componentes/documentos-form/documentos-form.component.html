@@ -15,7 +15,7 @@
                     <label class="custom-file-label">Archivo:</label>
                     <input type="file" class="custom-file-input" name="document">
                 </div>
-                <button class="btn btn-success btn-block mt-2" (click)="tripaloski ? ActualizarDocumentacion() : NewDocumento()">{{tripaloski== true ? 'Actualizar' : 'Subir Documento nuevo'}}
+                <button class="btn btn-success btn-block mt-2" (click)="auxiliar ? ActualizarDocumentacion() : NewDocumento()">{{auxiliar== true ? 'Actualizar' : 'Subir Documento nuevo'}}
                 </button>
             </form> 
         </div>
