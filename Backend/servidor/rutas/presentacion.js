@@ -3,7 +3,6 @@ const router = express.Router();
 
 //traemos la conexion con la db
 const mysqlConnection = require('../database');
-console.log('Rutas de Presentaciones');
 
 //Actualizar cambio
 router.put('/presentaciones/update', (req, res) => {

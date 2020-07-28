@@ -26,7 +26,7 @@ export class ViajesFromComponent implements OnInit {
     Descripcion:''
   }
   aux:Date=new Date;
-  proyecto_id=1;
+  proyecto_id:number=parseInt(localStorage.getItem("Proy_ID"));
   Ultimo_viaje:any;
   imagenes:Array<File>;
   documentos:Array<File>;

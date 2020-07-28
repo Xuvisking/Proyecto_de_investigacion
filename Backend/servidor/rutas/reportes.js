@@ -5,7 +5,6 @@ const router = express.Router();
 const mysqlConnection = require('../database');
 
 //Crear Evento
-console.log('Rutas de Reportes');
 router.post('/reportes/create', (req, res) => {
     const { Nombre,Fecha_Inicial,Fecha_Final, Proyecto_Proy_ID } = req.body;
     const query ='INSERT INTO Reporte(Nombre, Fecha_inicial, Fecha_final, Proyecto_Proy_ID) VALUES (?,?,?,?)';

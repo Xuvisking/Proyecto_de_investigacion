@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProyectoService } from '../../services/proyecto.service';
 import { proyectobd } from '../../models/proyectobd';
+import { permisos } from 'src/app/models/proyecto';
 
 @Component({
   selector: 'app-proyecto',
@@ -15,14 +16,17 @@ export class ProyectoComponent implements OnInit {
   @HostBinding('class') clases = 'row';
 
   response: any = [];
-
+  getPermiso:permisos={
+    users_User_ID:null,
+    Proyecto_Proy_ID:null
+  }
   datos: proyectobd = {
     Descripcion: null,
     Estado: null,
     Nombre: null,
     Proy_ID: null,
   }
-
+  permiso:number;
   edit: boolean = false;
   boolPresentacion:boolean=false;
   boolViajes:boolean=false;
@@ -40,9 +44,25 @@ export class ProyectoComponent implements OnInit {
             localStorage.setItem('Proy_ID', JSON.stringify(res[0].Proy_ID));
             console.log(this.datos[0].Proy_ID);
             this.edit = true;
+            this.getPermiso.Proyecto_Proy_ID=params.id;
+            this.getPermiso.users_User_ID=parseInt(localStorage.getItem("Proy_ID"));
+            this.ProyectoData.getPermisos(this.getPermiso).subscribe(
+              res =>{
+                this.permiso=res[0].Permiso;
+                if(res[0].Permiso == 1){
+                  console.log("el usuario SI tiene permisos de edicion",this.permiso)
+                }else{
+                  console.log("el usuario NO tiene permisos de edicion",this.permiso)
+                }
+              },
+              err=> console.log(err)
+
+            )
+
           },
           err => console.log(err)
         )
+
     }
   }
   mostrarPresentacion(){

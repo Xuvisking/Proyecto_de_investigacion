@@ -10,13 +10,13 @@ import {ReunionesService} from '../../services/reuniones.service'
   styleUrls: ['./reunion-form.component.sass']
 })
 export class ReunionFormComponent implements OnInit {
-  //variables aux
+  //variables aux para las funciones 
   aux=0;
   participantes:any=[];
   colaboradores:any=[];
   Seleccion:string='';
   edit:boolean=false;
-  proyecto_id=1;
+  proyecto_id:number=parseInt(localStorage.getItem("Proy_ID"));
   documentos:Array<File>;
   reunion:reunion={
     Reunion_ID:null,
@@ -27,9 +27,10 @@ export class ReunionFormComponent implements OnInit {
     Proyecto_Proy_ID:null
   }
   Ultima_reunion:any;
-  constructor(  private reunionServi:ReunionesService,private router: Router,private activatedRoute: ActivatedRoute,private http:HttpClient) { }
-  opcionSeleccionado: string  = '0'; // Iniciamos
+  opcionSeleccionado: string  = '0';
   verSeleccion: string        = '';
+
+  constructor(  private reunionServi:ReunionesService,private router: Router,private activatedRoute: ActivatedRoute,private http:HttpClient) { }
   
   ngOnInit(): void {
     console.log(this.documentos)
@@ -64,6 +65,7 @@ export class ReunionFormComponent implements OnInit {
 
     
   }
+  // añade participantes a la presentacion
   anadirParticipante(){
     this.participantes.push(this.colaboradores[Number(this.verSeleccion)-1]);
     console.log(this.participantes)
@@ -72,6 +74,7 @@ export class ReunionFormComponent implements OnInit {
     this.verSeleccion = this.opcionSeleccionado;
     console.log(this.verSeleccion)
   }
+  //actualiza la reunion con los nuevos parametros del formulario
   ActualizarReunion(){
     delete this.reunion.Proyecto_Proy_ID;
     this.reunionServi.updateReunion(this.reunion)
@@ -104,8 +107,9 @@ export class ReunionFormComponent implements OnInit {
          }
         }
   }
+  //cargo los archivos al arreglo documentos
   onFileChange(e){
-    //cargo los archivos al arreglo documentos
+    
     this.aux=this.aux+1;
     if(e.target.files.length!=0){
     console.log("Files change",e);
@@ -113,9 +117,9 @@ export class ReunionFormComponent implements OnInit {
     console.log(this.documentos);
     }
   }
+  //funcion para subir los documentos a la api
   subirDoc(){
     let formDoc= new FormData();
-    //con esto se reccorre el arreglo de doc que se quieren subir
     if(this.aux!=0){
       for (let doc of this.documentos){
       formDoc.append("documents",doc,doc.name);
@@ -128,6 +132,7 @@ export class ReunionFormComponent implements OnInit {
     }
     
   }
+  //guardar el nuevo evento, esto llama a las demas funciones como subir documentos
   saveReunion(){
     if(this.reunion.Lugar!='' && this.reunion.Titulo!='' && this.reunion.Descripcion!='' && this.reunion.Fecha!=''){
       delete this.reunion.Reunion_ID;
@@ -169,9 +174,8 @@ export class ReunionFormComponent implements OnInit {
       this.router.navigate(['/reuniones']);
     }
   }
+  //se guardan las rutas en la base de datos para luego traer las fotos y documentos
   guardarRutasDoc(){
-    //con esto tengo el id del ultimo viaje creado y tambien tengo el id del proyecto
-    //luego 
     var inserRutaDoc:Doc_reunion={
       URL:'',
       Reunion_Reunion_ID:null,

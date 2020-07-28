@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 //components
 import { AppComponent } from './app.component';
@@ -51,7 +54,8 @@ import { GruposService } from './services/grupos.service';
 import { GrupoEliminarService } from './services/grupoeliminar.service';
 import { GrupoVerService } from './services/grupover.service';
 import { GrupoListMiembrosService } from './services/grupolistmiembros'; 
-import { GrupoMiembrosEliminarService } from './services/grupomiembroseliminar.service'
+import { GrupoMiembrosEliminarService } from './services/grupomiembroseliminar.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 
@@ -94,7 +98,10 @@ import { GrupoMiembrosEliminarService } from './services/grupomiembroseliminar.s
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [
     ViajesService,

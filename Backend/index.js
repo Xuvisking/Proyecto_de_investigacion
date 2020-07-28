@@ -5,6 +5,7 @@ var cors = require('cors');
 var morgan = require('morgan');
 const multer =require('multer');
 
+//configuracion para ruta de manejo de archivos con multer
 const storage=multer.diskStorage({
         destination:(req,file,cb)=>{
             cb(null,'./imagenes')

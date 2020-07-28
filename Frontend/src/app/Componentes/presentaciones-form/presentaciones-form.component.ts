@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PresentacionesFormComponent implements OnInit {
   //variables
   edit:boolean=false;
-  proyecto_id=1;
+  proyecto_id:number=parseInt(localStorage.getItem("Proy_ID"));
   documentos:Array<File>;
   presentacion:presentacion={
     Presentacion_ID:null,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { proyecto } from '../models/proyecto'
+import { proyecto, permisos } from '../models/proyecto'
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,8 @@ export class ProyectoService {
 
   MostrarNombre(id : number){
     return this.http.get(`${this.API_URI}/proyectos/nombre/${id}`);
+  }
+  getPermisos(usuario:permisos){
+    return this.http.post(`${this.API_URI}/usuario/permisos`,usuario);
   }
 }

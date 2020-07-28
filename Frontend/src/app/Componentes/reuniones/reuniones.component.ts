@@ -23,7 +23,7 @@ export class ReunionesComponent implements OnInit {
   //para mostrar o no el listado de viajes
   bool:boolean=true;
   //traer este valor por localStorage o por parametro url
-  proyecto_id:number=1;
+  proyecto_id:number=parseInt(localStorage.getItem("Proy_ID"));
   //confiar en urls
   pagina: number = 1;
 

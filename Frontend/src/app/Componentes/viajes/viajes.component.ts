@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import {ViajesService} from '../../services/viajes.service';
 import {DomSanitizer,SafeUrl} from '@angular/platform-browser';
 @Component({
@@ -7,6 +7,8 @@ import {DomSanitizer,SafeUrl} from '@angular/platform-browser';
   styleUrls: ['./viajes.component.css']
 })
 export class ViajesComponent implements OnInit {
+ //Agregar una variable tipo input para traer si tiene permisos para modificar o no 
+ //agregar tambien creacion, vista y modificacion a un dialog y termino mi parte.
   gestion:boolean=false;
   documentos:any=[];
   imagenes:any=[];
@@ -17,8 +19,8 @@ export class ViajesComponent implements OnInit {
   //para mostrar o no el listado de viajes
   bool:boolean=true;
   //traer este valor por localStorage o por parametro url
-  proyecto_id:number=1;
-  p: number = 1;
+  proyecto_id:number=parseInt(localStorage.getItem("Proy_ID"));
+
   URLimg:any=[];
   URLdoc:any=[];
   constructor(private viaje:ViajesService, private sanador:DomSanitizer) { }
