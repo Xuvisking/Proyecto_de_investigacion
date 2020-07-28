@@ -8,6 +8,11 @@ export interface userandproyectoID {
     Proyecto_Proy_ID?: number;
 } 
 
+export interface useridandname {
+    User_ID?: number;
+    Usuario?: string;
+} 
+
 export interface userIDnoJP {
     Proyecto_Proy_ID?: number;
     JP?: number;

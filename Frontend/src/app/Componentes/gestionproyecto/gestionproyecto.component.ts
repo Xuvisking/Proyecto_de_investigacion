@@ -6,12 +6,22 @@ import { cambionombre } from '../../models/cambionombre';
 import { cambiodescripcion } from '../../models/cambiodescripcion';
 import { cambioestado } from '../../models/cambioestado';
 
+import { userandjpid } from '../../models/IDJPIDuser'
+import { Gestionmiembros } from '../../services/gestionmiembros.service'
+
 @Component({
   selector: 'app-gestionproyecto',
   templateUrl: './gestionproyecto.component.html',
   styleUrls: ['./gestionproyecto.component.sass']
 })
 export class GestionproyectoComponent implements OnInit {
+
+  actualJPID: number;
+  actualProyID: number;
+  usuario: userandjpid = {
+    users_User_ID: null,
+    Proyecto_Proy_ID: null
+  }
 
   response: any = [];
   Proy_ID : number;
@@ -30,7 +40,7 @@ export class GestionproyectoComponent implements OnInit {
   }
   edit: boolean = false;
 
-  constructor(private ProyectoCambio : gestionproyectoservice, private router: Router , private activatedRoute: ActivatedRoute) { }
+  constructor(private gestionMiembros: Gestionmiembros, private ProyectoCambio : gestionproyectoservice, private router: Router , private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
@@ -38,6 +48,20 @@ export class GestionproyectoComponent implements OnInit {
       this.Proy_ID = params.id;
       this.edit = true;
     }
+    this.actualJPID = Number(localStorage.getItem("User_ID"))
+    this.actualProyID = Number(localStorage.getItem("Proy_ID"))
+    this.usuario.users_User_ID = this.actualJPID
+    this.usuario.Proyecto_Proy_ID = this.actualProyID
+    
+    this.gestionMiembros.retornarsiesjp(this.usuario).subscribe(
+      res => {
+        if (res === false){
+          alert("No eres Jefe de Proyecto")
+          this.router.navigate(['/home']);
+        }
+      },
+      err => console.log(err)
+    )
   }
 
   ModificarNombre(): void{
@@ -45,6 +69,7 @@ export class GestionproyectoComponent implements OnInit {
     this.cnombre.Nombre = this.cnombre.Nombre.toString()
     console.log(this.cnombre)
     this.ProyectoCambio.CambiarNombre(this.cnombre).subscribe(res => console.log(res),req => console.log(req))
+    alert("Nombre modificado")
   }
 
   ModificarDescripcion(): void{
@@ -52,6 +77,7 @@ export class GestionproyectoComponent implements OnInit {
     this.cdescripcion.Descripcion = this.cdescripcion.Descripcion.toString()
     console.log(this.cdescripcion)
     this.ProyectoCambio.CambiarDescripcion(this.cdescripcion).subscribe(res => console.log(res),req => console.log(req))
+    alert("Descripcion modificada")
   }
   
   ModificarEstado(): void{
@@ -59,6 +85,7 @@ export class GestionproyectoComponent implements OnInit {
     this.cestado.Estado = this.cestado.Estado.toString()
     console.log(this.cestado)
     this.ProyectoCambio.CambiarEstado(this.cestado).subscribe(res => console.log(res),req => console.log(req))
+    alert("Estado modificado")
   }
   EliminarProyecto(): void{
     if(confirm('Estas seguro de eliminar el proyecto?')){

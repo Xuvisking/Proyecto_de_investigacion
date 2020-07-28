@@ -77,3 +77,4 @@ app.use(require('./servidor/rutas/mienbros_proyectos'));
 app.use(require('./servidor/rutas/login'));
 app.use(require('./servidor/rutas/generarproyecto'));
 app.use(require('./servidor/rutas/home'));
+app.use(require('./servidor/rutas/invitacion'));

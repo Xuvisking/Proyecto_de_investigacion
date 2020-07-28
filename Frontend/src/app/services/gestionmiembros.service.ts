@@ -45,6 +45,9 @@ export class Gestionmiembros {
   Get_UserID(username: userandproyecto) {
     return this.http.get(`${this.API_URI}/mienbros_proyectos/getuseridbyemail/${username.Email}`);
   }
+  Get_UserIDbyusername(username: string) {
+    return this.http.get(`${this.API_URI}/mienbros_proyectos/getuseridbyusername/${username}`);
+  }
   Invmiemb(idsJPUser: Invproyecto) {
     return this.http.post(`${this.API_URI}/mienbros_proyectos/invitarmiembro`,idsJPUser);
   }
