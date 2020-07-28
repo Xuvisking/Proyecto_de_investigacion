@@ -44,7 +44,7 @@ Los componentes del Backend están están ubicados en la ruta:
  "Proyecto_de_investigacion/Backend/servidor/rutas"
 ```
 ### Login y Inicio
-Los componentes trabajados en al momento de iniciar sesion es únicamente login y el de I
+Los componentes trabajados en al momento de iniciar sesion es únicamente login y el de Inicio es el componente home
 
 ### Gestión de proyecto
 La funcionalidad básica de gestión de un proyecto está implementada tanto en Backend y Frontend, en donde en esta última los documentos asociados son los siguientes:
@@ -57,11 +57,12 @@ documentos, componente encargado de mostrar los documentos asociados al proyecto
 
 documentos-form, este componente se encarga de realizar la gestión documental, de esta manera es posible añadir, modificar o eliminar documentos al proyecto.
 
-generarproyecto, este componente trata de la generación de de un nuevo proyecto ingresando un leve formulario en que se llena Nombre, estado y Descripción del proyecto
+Estos componentes hacen uso de los archivos documentos.js y proyectos.js por parte del Backend, ubicados en la ruta descrita inicialmente.
 
-gestionmiembros, en este componente trata de invitar un usuario al proyecto, eliminar un miembro de proyecto, cambiar jefe de proyecto con un miembro de proyecto
+generarproyecto, este componente trata de la generación de de un nuevo proyecto ingresando un leve formulario en que se llena Nombre, estado y Descripción del proyecto. En el backend usa generarproyecto.js
 
-Estos componentes hacen uso de los archivos documentos.js y proyectos .js por parte del Backend, ubicados en la ruta descrita inicialmente.
+gestionmiembros, en este componente trata de invitar un usuario al proyecto, eliminar un miembro del proyecto	, cambiar jefe de proyecto con un miembro de proyecto. Respecto a este punto hay que mejorar algunas medidas de asegurar como que al momento de ingresar un correo no tenga tilde. En el backend utiliza el archivo miembros_proyectos.js
+
 
 ### Grupos
 
@@ -81,6 +82,10 @@ gruposmiembros muestra una lista de los miembros de un grupo
 
 grupover muestra la página principal de un grupo en específico
 
+En el backend, la rama grupos utiliza las rutas ubicadas en Backend/servidor/rutas/grupos.js
+mediante los servicios ubicados en Frontend/src/app/services/
+
+
 ### Eventos
 Para solucionar esta problemática se dividieron los eventos en tres tipos que son: viajes, presentaciones y reuniones; esto debido a que cada evento tiene diferentes atributos.
  
@@ -92,7 +97,11 @@ La primera ruta corresponde a la visualización de los viajes lo que permite ver
  
 El evento presentación debe ser utilizado para guardar las presentaciones que se hicieron sobre el proyecto, como presentación de avances, presentaciones en conferencias, entre otros. Este tipo de evento se componen de un título, una fecha, un motivo, una descripción de la presentación, un presentador y finalmente una sección para adjuntar el archivo de la presentación.
  
-Los archivos correspondientes a este evento se encuentran en las rutas Frontend/src/app/componentes/presentaciones , Frontend/src/app/componentes/presentaciones-form y las rutas de la api están en Backend/servidor/rutas/presentacion.js.
+
+Los archivos correspondientes a este evento se encuentran en las rutas
+
+```Frontend/src/app/componentes/presentaciones , Frontend/src/app/componentes/presentaciones-form y las rutas de la api están en Backend/servidor/rutas/presentacion.js.
+```
  
 En la primera ruta podemos encontrar la visualizaciones de las presentación y el panel para el crud de las presentaciones, en la segunda ruta se encuentra el formulario para la creación y la modificación de los de las presentaciones y finalmente la ruta de la api es la que se utiliza para guardar y consumir la información de las presentaciones en la base de datos.
  
