@@ -6,6 +6,8 @@ Este software es una aplicación web creada para la Universidad Diego Portales m
 
 Este software tiene como fin cumplir con los requisitos dados por el stakeholder que consta de realizar la gestión de documental, eventos y de miembros en cuantos proyectos y grupos de investigación.
 
+para un mayor detalle sobre el diseño del software, revisar informe de desarrollo ubicado en Documentos.
+
 
  ## Guía de instalación
 
@@ -22,7 +24,6 @@ sudo apt install ng-common
 
 ```
 
-
 También se requiere el módulo de angular devkit, se puede instalar en consola con el siguiente comando:
 
 ```
@@ -30,9 +31,7 @@ npm install --save-dev @angular-devkit/build-angular
 ```
 
 
-##############################################################
-
-## Explicación de componentes:
+## Explicación de componentes del Frontend y Backend:
 
 
 Los componentes del Fronted están están ubicados en la ruta:
@@ -44,6 +43,8 @@ Los componentes del Backend están están ubicados en la ruta:
 ```
  "Proyecto_de_investigacion/Backend/servidor/rutas"
 ```
+### Login y Inicio
+Los componentes trabajados en al momento de iniciar sesion es únicamente login y el de I
 
 ### Gestión de proyecto
 La funcionalidad básica de gestión de un proyecto está implementada tanto en Backend y Frontend, en donde en esta última los documentos asociados son los siguientes:
@@ -56,9 +57,13 @@ documentos, componente encargado de mostrar los documentos asociados al proyecto
 
 documentos-form, este componente se encarga de realizar la gestión documental, de esta manera es posible añadir, modificar o eliminar documentos al proyecto.
 
+generarproyecto, este componente trata de la generación de de un nuevo proyecto ingresando un leve formulario en que se llena Nombre, estado y Descripción del proyecto
+
+gestionmiembros, en este componente trata de invitar un usuario al proyecto, eliminar un miembro de proyecto, cambiar jefe de proyecto con un miembro de proyecto
+
 Estos componentes hacen uso de los archivos documentos.js y proyectos .js por parte del Backend, ubicados en la ruta descrita inicialmente.
 
-#Grupos
+### Grupos
 
 gestion-grupos muestra la información a editar dentro de un grupo, tales como agregar y eliminar miembros y eliminar el grupo
 
@@ -76,7 +81,7 @@ gruposmiembros muestra una lista de los miembros de un grupo
 
 grupover muestra la página principal de un grupo en específico
 
-# Eventos
+### Eventos
 Para solucionar esta problemática se dividieron los eventos en tres tipos que son: viajes, presentaciones y reuniones; esto debido a que cada evento tiene diferentes atributos.
  
 el evento viaje puede ser utilizado para salir a terreno, viajes a conferencias, entre otros,Este se caracteriza por tener una fecha de inicio y una de fin, el lugar de destino, el motivo del viaje, una descripción detallada de lo que se hizo durante el viaje, imágenes que ayudan a complementarlo y documentos asociados que pueden ser los tickets de vuelo, boletas de hospedajes, entre otros.
@@ -100,3 +105,4 @@ Backend/servidor/rutas/reuniones.js.
 Al igual que en los eventos anteriores la primera ruta corresponde al componente que permite la visualización y acceder a la la gestión del evento reunión, mientras que la segunda ruta accede a un componente compuesto por un formulario, el cual permite la creación y la modificaciones de una reunión, y finalmente la última ruta accede a las funciones que se encuentran en la api, la cual nos permite consumir y agregar información a la base de datos relacionada con las reuniones.
 
 Como último punto cabe destacar que para guardar documentos o imágenes, estas se suben a la api, donde se pensó que posteriormente podrían ser enviadas a los servicios de aws. Las rutas de estas imágenes y documentos son guardadas en una tabla de la base de datos para luego poder consumir estos archivos desde el cliente.
+
